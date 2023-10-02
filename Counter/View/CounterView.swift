@@ -46,6 +46,7 @@ struct CounterView: View {
                 Spacer()
             }
         }
+        .navigationBarBackButtonHidden()
         Text("Total chips are \(viewModel.getTotalChips())")
         
     }

@@ -21,87 +21,100 @@ struct StartView: View {
     @State private var defaultBuyIn: Int = 400
     @State private var defaultValuePerChip: Float = 0.01
     var body: some View {
-        VStack {
-            HStack {
-                Text("Session Date: ")
+        NavigationStack {
+            VStack {
+                HStack {
+                    Text("Session Date: ")
+                    Spacer()
+                    TextField(viewModel.getSessionName(), text: $sessionName)
+                }
+                .padding(10)
+                HStack {
+                    Text("Player 1: ")
+                    Spacer()
+                    TextField("", text: $player1)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding(10)
+                HStack {
+                    Text("Player 2: ")
+                    Spacer()
+                    TextField("", text: $player2)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding(10)
+                HStack {
+                    Text("Player 3: ")
+                    Spacer()
+                    TextField("", text: $player3)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding(10)
+                HStack {
+                    Text("Player 4: ")
+                    Spacer()
+                    TextField("", text: $player4)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding(10)
+                HStack {
+                    Text("Player 5: ")
+                    Spacer()
+                    TextField("", text: $player5)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding(10)
+                HStack {
+                    Text("Player 6: ")
+                    Spacer()
+                    TextField("", text: $player6)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding(10)
+                HStack {
+                    Text("Player 7: ")
+                    Spacer()
+                    TextField("", text: $player7)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding(10)
+                HStack {
+                    Text("Buy In Chips Per Player: ")
+                    Spacer()
+                    TextField("", value: $defaultBuyIn, format: .number)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding(10)
+                HStack {
+                    Text("Dollar Value Per Chip: ")
+                    Spacer()
+                    TextField("", value: $defaultValuePerChip, format: .number)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .padding(10)
                 Spacer()
-                TextField(viewModel.getSessionName(), text: $sessionName)
             }
-            .padding(10)
-            HStack {
-                Text("Player 1: ")
-                Spacer()
-                TextField("", text: $player1)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            HStack {
-                Text("Player 2: ")
-                Spacer()
-                TextField("", text: $player2)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            HStack {
-                Text("Player 3: ")
-                Spacer()
-                TextField("", text: $player3)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            HStack {
-                Text("Player 4: ")
-                Spacer()
-                TextField("", text: $player4)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            HStack {
-                Text("Player 5: ")
-                Spacer()
-                TextField("", text: $player5)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            HStack {
-                Text("Player 6: ")
-                Spacer()
-                TextField("", text: $player6)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            HStack {
-                Text("Player 7: ")
-                Spacer()
-                TextField("", text: $player7)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            HStack {
-                Text("Buy In Chips Per Player: ")
-                Spacer()
-                TextField("", value: $defaultBuyIn, format: .number)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            HStack {
-                Text("Dollar Value Per Chip: ")
-                Spacer()
-                TextField("", value: $defaultValuePerChip, format: .number)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
             Spacer()
-//            NavigationView(content: {
-//                NavigationLink(destination: CounterView(viewModel: viewModel)) { Text("OK") }
-//            })
-            NavigationStack {
-                NavigationLink("OK") {
-                    CounterView(viewModel: viewModel)
+                
+            NavigationLink("OK") {
+                //addPlayers
+//                if !player1.isEmpty {
+//                    viewModel.addNewPlayer(name: player1)
+//                }
+                CounterView(viewModel: viewModel).onAppear {
+                    addPlayers()
                 }
             }
-//            NavigationLink("OK", destination: CounterView(viewModel: viewModel))
-            
+//            .onSubmit {
+//                if !player1.isEmpty {
+//                    viewModel.addNewPlayer(name: player1)
+//                }
+//            }
+        }
+    }
+    func addPlayers() {
+        if !player1.isEmpty {
+            viewModel.addNewPlayer(name: player1)
         }
     }
 }

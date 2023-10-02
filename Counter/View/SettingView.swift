@@ -37,6 +37,7 @@ struct SettingView: View {
             }
             .padding(10)
         }
+        Text("Current Default buy in chips are : \(viewModel.getIncrement())")
         Spacer()
         
     }
