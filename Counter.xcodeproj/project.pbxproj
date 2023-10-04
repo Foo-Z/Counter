@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E37265452ACD4A0C00E8997D /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265442ACD4A0C00E8997D /* CheckoutView.swift */; };
+		E37265472ACD4F0F00E8997D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265462ACD4F0F00E8997D /* ResultView.swift */; };
+		E37265492ACD4F5600E8997D /* PlayerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265482ACD4F5600E8997D /* PlayerResultView.swift */; };
 		E3963A232ACA198C0032D4B1 /* CounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A222ACA198C0032D4B1 /* CounterApp.swift */; };
 		E3963A252ACA198C0032D4B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A242ACA198C0032D4B1 /* ContentView.swift */; };
 		E3963A272ACA198D0032D4B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3963A262ACA198D0032D4B1 /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 		E3963A592ACA32980032D4B1 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A582ACA32980032D4B1 /* CounterView.swift */; };
 		E3963A5B2ACA79B90032D4B1 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A5A2ACA79B90032D4B1 /* SettingView.swift */; };
 		E3963A5D2ACA8DA70032D4B1 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A5C2ACA8DA70032D4B1 /* StartView.swift */; };
+		E3963A5F2ACB8EEC0032D4B1 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A5E2ACB8EEC0032D4B1 /* Setting.swift */; };
+		E3963A612ACD36190032D4B1 /* AddPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A602ACD36190032D4B1 /* AddPlayerView.swift */; };
+		E3963A632ACD43390032D4B1 /* PlayerCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A622ACD43380032D4B1 /* PlayerCheckoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E37265442ACD4A0C00E8997D /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		E37265462ACD4F0F00E8997D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		E37265482ACD4F5600E8997D /* PlayerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerResultView.swift; sourceTree = "<group>"; };
 		E3963A1F2ACA198C0032D4B1 /* Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3963A222ACA198C0032D4B1 /* CounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterApp.swift; sourceTree = "<group>"; };
 		E3963A242ACA198C0032D4B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +68,9 @@
 		E3963A582ACA32980032D4B1 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		E3963A5A2ACA79B90032D4B1 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E3963A5C2ACA8DA70032D4B1 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		E3963A5E2ACB8EEC0032D4B1 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		E3963A602ACD36190032D4B1 /* AddPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerView.swift; sourceTree = "<group>"; };
+		E3963A622ACD43380032D4B1 /* PlayerCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCheckoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +163,7 @@
 			children = (
 				E3963A502ACA24660032D4B1 /* Player.swift */,
 				E3963A542ACA26DB0032D4B1 /* Counter.swift */,
+				E3963A5E2ACB8EEC0032D4B1 /* Setting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,9 +180,14 @@
 			isa = PBXGroup;
 			children = (
 				E3963A562ACA328C0032D4B1 /* PlayerView.swift */,
+				E3963A622ACD43380032D4B1 /* PlayerCheckoutView.swift */,
 				E3963A582ACA32980032D4B1 /* CounterView.swift */,
 				E3963A5A2ACA79B90032D4B1 /* SettingView.swift */,
 				E3963A5C2ACA8DA70032D4B1 /* StartView.swift */,
+				E3963A602ACD36190032D4B1 /* AddPlayerView.swift */,
+				E37265442ACD4A0C00E8997D /* CheckoutView.swift */,
+				E37265462ACD4F0F00E8997D /* ResultView.swift */,
+				E37265482ACD4F5600E8997D /* PlayerResultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,12 +322,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3963A5F2ACB8EEC0032D4B1 /* Setting.swift in Sources */,
 				E3963A5D2ACA8DA70032D4B1 /* StartView.swift in Sources */,
 				E3963A552ACA26DB0032D4B1 /* Counter.swift in Sources */,
 				E3963A252ACA198C0032D4B1 /* ContentView.swift in Sources */,
+				E3963A612ACD36190032D4B1 /* AddPlayerView.swift in Sources */,
+				E37265472ACD4F0F00E8997D /* ResultView.swift in Sources */,
+				E3963A632ACD43390032D4B1 /* PlayerCheckoutView.swift in Sources */,
 				E3963A532ACA26060032D4B1 /* CounterViewModel.swift in Sources */,
+				E37265452ACD4A0C00E8997D /* CheckoutView.swift in Sources */,
 				E3963A592ACA32980032D4B1 /* CounterView.swift in Sources */,
 				E3963A572ACA328C0032D4B1 /* PlayerView.swift in Sources */,
+				E37265492ACD4F5600E8997D /* PlayerResultView.swift in Sources */,
 				E3963A5B2ACA79B90032D4B1 /* SettingView.swift in Sources */,
 				E3963A512ACA24670032D4B1 /* Player.swift in Sources */,
 				E3963A232ACA198C0032D4B1 /* CounterApp.swift in Sources */,

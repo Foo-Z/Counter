@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//@Observable
 class CounterViewModel: ObservableObject {
     @Published private var model: Counter = Counter()
     
@@ -16,7 +17,7 @@ class CounterViewModel: ObservableObject {
     }
     
     func getSessionName() -> String {
-        model.counterName
+        model.getSessionName()
     }
     func buyin(player: Player, buyIn: Int) -> Int {
         model.buyin(player: player, buyIn: buyIn)

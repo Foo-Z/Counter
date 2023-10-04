@@ -7,27 +7,31 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
-struct Counter {
+class Counter: Identifiable {
     var players: [Player]
     var totalChips: Int
-    var counterName: String
     var date: Date
     var increment: Int
     var valuePerChip: Float
+    var counterId: String = UUID().uuidString
     
     init() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY/MM/dd"
         players = []
         totalChips = 0
         date = Date.now
-        counterName = dateFormatter.string(from: date)
         increment = 200
         valuePerChip = 0.01
     }
     
-    mutating func buyin(player: Player, buyIn: Int) -> Int {
+    func getSessionName() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    func buyin(player: Player, buyIn: Int) -> Int {
         guard let playerIndex = players.firstIndex(where: { $0 == player}) else {
             return 0
         }
@@ -35,7 +39,7 @@ struct Counter {
         return players[playerIndex].buyIn
     }
     
-    mutating func addNewPlayer(name: String) {
+    func addNewPlayer(name: String) {
         players.append(Player(name: name));
     }
     
@@ -46,7 +50,8 @@ struct Counter {
         }
         return sum
     }
-    mutating func changeIncrement(increment: Int) {
+    
+    func changeIncrement(increment: Int) {
         self.increment = increment
     }
 }

@@ -6,58 +6,77 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CounterView: View {
-    @ObservedObject var viewModel: CounterViewModel
-    @State var showingAlert: Bool = false
+    @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) private var dismiss
+    @Query private var players: [Player]
+    @Query private var settings: [Setting]
+    @State var showingAddPlayer: Bool = false
     @State var showingSettings: Bool =  false
-    @State private var name = ""
+    
+    
     var body: some View {
-        HStack {
-            //NavigationView {
-//                NavigationLink(
-//                    destination: SettingView(viewModel: viewModel),
-//                    label: {
-//                        Text("Settings")
-//                            .font(.subheadline)
-//                    }
-//                )
-            //}
-            Button("Settings") {
-                showingSettings = true
-            }
-            .sheet(isPresented: $showingSettings, content: {
-                SettingView(viewModel: viewModel)
-            })
-            Spacer()
-            Button("add new player") {
-                showingAlert = true
-            }
-            .alert("Enter your name", isPresented: $showingAlert) {
-                TextField("New Player", text: $name)
-                Button("Ok", action: addNewPlayer)
-            }
-        }
-        ScrollView {
-            VStack() {
-                ForEach(viewModel.players) { player in
-                    PlayerView(viewModel: viewModel, currentPlayer: player)
+        NavigationStack {
+            HStack {
+                Button("Settings") {
+                    showingSettings = true
                 }
+                .sheet(isPresented: $showingSettings, content: {
+                    SettingView()
+                })
                 Spacer()
+                Button("Add New Player") {
+                    showingAddPlayer = true
+                }.sheet(isPresented: $showingAddPlayer, content: {
+                    AddPlayerView()
+                })
+            }
+            VStack {
+                List {
+                    ForEach(players) { player in
+                        PlayerView(currentPlayer: player)
+                    }
+                    .onDelete(perform: { indexSet in
+                        for index in indexSet {
+                            removePlayer(players[index])
+                        }
+                    })
+                }
+            }
+            .navigationBarBackButtonHidden()
+            VStack(spacing: 10) {
+                Text("Total chips are: \(getTotalChips())")
+                Text("Total buy in value is: $ \(getTotalBuyIn())")
+            }
+            NavigationLink("Checkout") {
+                CheckoutView()
             }
         }
-        .navigationBarBackButtonHidden()
-        Text("Total chips are \(viewModel.getTotalChips())")
-        
     }
-    func addNewPlayer() {
-        viewModel.addNewPlayer(name: name)
-        name = ""
+    
+    func removePlayer(_ player: Player) {
+        context.delete(player)
+    }
+    
+    func getTotalChips() -> Int {
+        var totalChips: Int = 0
+        for player in players {
+            totalChips += player.buyIn
+        }
+        return totalChips
+    }
+    
+    func getChipValue() -> Float {
+        settings.first?.valuePerChip ?? 0.1
+    }
+    
+    func getTotalBuyIn() -> String {
+        String(format: "%.2f", getChipValue() * Float(getTotalChips()))
     }
 }
 
 #Preview {
-    CounterView(
-        viewModel: CounterViewModel()
-    )
+    CounterView()
 }

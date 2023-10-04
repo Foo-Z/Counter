@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct StartView: View {
-    @ObservedObject var viewModel: CounterViewModel
+    @Environment(\.modelContext) private var context
     @State private var sessionName: String = ""
     @State private var next: Bool = false
     @State private var player1: String = ""
@@ -18,15 +19,18 @@ struct StartView: View {
     @State private var player5: String = ""
     @State private var player6: String = ""
     @State private var player7: String = ""
-    @State private var defaultBuyIn: Int = 400
-    @State private var defaultValuePerChip: Float = 0.01
+    @State private var players: [String] = ["","","","","","",""]
+    @State private var defaultBuyIn: Int = 200
+    @State private var defaultValuePerChip: Float = 0.1
+    @Query private var settings: [Setting]
+
     var body: some View {
         NavigationStack {
             VStack {
                 HStack {
                     Text("Session Date: ")
                     Spacer()
-                    TextField(viewModel.getSessionName(), text: $sessionName)
+                    TextField(getSessionName(), text: $sessionName)
                 }
                 .padding(10)
                 HStack {
@@ -97,28 +101,64 @@ struct StartView: View {
             Spacer()
                 
             NavigationLink("OK") {
-                //addPlayers
-//                if !player1.isEmpty {
-//                    viewModel.addNewPlayer(name: player1)
-//                }
-                CounterView(viewModel: viewModel).onAppear {
+                CounterView().onAppear {
                     addPlayers()
+                    if settings.isEmpty {
+                        context.insert(Setting(increment: defaultBuyIn, valuePerChip: defaultValuePerChip))
+                    } else {
+                        settings.first?.increment = defaultBuyIn
+                        settings.first?.valuePerChip = defaultValuePerChip
+                        try? context.save()
+                    }
+                    
                 }
             }
-//            .onSubmit {
-//                if !player1.isEmpty {
-//                    viewModel.addNewPlayer(name: player1)
-//                }
-//            }
         }
     }
     func addPlayers() {
         if !player1.isEmpty {
-            viewModel.addNewPlayer(name: player1)
+            context.insert(Player(name: player1))
         }
+        if !player2.isEmpty {
+            context.insert(Player(name: player2))
+        }
+        if !player3.isEmpty {
+            context.insert(Player(name: player3))
+        }
+        if !player4.isEmpty {
+            context.insert(Player(name: player4))
+        }
+        if !player5.isEmpty {
+            context.insert(Player(name: player5))
+        }
+        if !player6.isEmpty {
+            context.insert(Player(name: player6))
+        }
+        if !player7.isEmpty {
+            context.insert(Player(name: player7))
+        }
+    }
+    func getSessionName() -> String {
+        let dateFormatter = DateFormatter()
+        let date = Date.now
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        return dateFormatter.string(from: date)
+    }
+}
+struct RowView: View {
+    var index: Int
+    @State private var playerName: String
+    var body: some View {
+        HStack {
+            Text("Player \(index + 1): ")
+            Spacer()
+            TextField("", text: $playerName)
+                .textFieldStyle(.roundedBorder)
+        }
+        .padding(10)
     }
 }
 
 #Preview {
-    StartView(viewModel: CounterViewModel())
+    StartView()
 }

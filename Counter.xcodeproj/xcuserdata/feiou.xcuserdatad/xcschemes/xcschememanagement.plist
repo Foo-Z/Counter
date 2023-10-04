@@ -4,10 +4,37 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Counter 1.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Counter.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>E3963A1E2ACA198C0032D4B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E3963A2F2ACA198D0032D4B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E3963A392ACA198D0032D4B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
