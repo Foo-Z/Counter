@@ -14,12 +14,12 @@ class Player: Identifiable, Equatable {
     var name: String
     var buyIn: Int
     var cashOut: Int
-    var profit: Int = 0
+    //var profit: Int = 0
     init(name: String) {
         self.name = name
         buyIn = 200
         cashOut = 200
-        profit = 0
+        //profit = 0
     }
 }
 

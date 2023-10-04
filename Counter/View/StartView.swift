@@ -86,6 +86,7 @@ struct StartView: View {
                     Text("Buy In Chips Per Player: ")
                     Spacer()
                     TextField("", value: $defaultBuyIn, format: .number)
+                        .keyboardType(.numberPad)
                         .textFieldStyle(.roundedBorder)
                 }
                 .padding(10)
@@ -93,10 +94,14 @@ struct StartView: View {
                     Text("Dollar Value Per Chip: ")
                     Spacer()
                     TextField("", value: $defaultValuePerChip, format: .number)
+                        .keyboardType(.numberPad)
                         .textFieldStyle(.roundedBorder)
                 }
                 .padding(10)
                 Spacer()
+            }
+            .onTapGesture {
+                self.hideKeyboard()
             }
             Spacer()
                 
@@ -156,6 +161,11 @@ struct RowView: View {
                 .textFieldStyle(.roundedBorder)
         }
         .padding(10)
+    }
+}
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

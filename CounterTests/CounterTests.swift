@@ -6,7 +6,6 @@
 //
 
 import XCTest
-
 final class CounterTests: XCTestCase {
 
     override func setUpWithError() throws {

@@ -28,8 +28,9 @@ struct PlayerResultView: View {
 //    }
     
     func getResult() -> String {
-        let r = currentPlayer.profit < 0 ? "lose" : "win"
-        let profit = Float(currentPlayer.profit) * getChipValue()
+        let diff = currentPlayer.cashOut - currentPlayer.buyIn
+        let r = diff < 0 ? "lose" : "win"
+        let profit = Float(diff) * getChipValue()
         return "\(r) \(String(format: "%.2f", profit)) Dollars"
         
     }

@@ -10,6 +10,8 @@
 		E37265452ACD4A0C00E8997D /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265442ACD4A0C00E8997D /* CheckoutView.swift */; };
 		E37265472ACD4F0F00E8997D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265462ACD4F0F00E8997D /* ResultView.swift */; };
 		E37265492ACD4F5600E8997D /* PlayerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265482ACD4F5600E8997D /* PlayerResultView.swift */; };
+		E372654B2ACDE01B00E8997D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372654A2ACDE01B00E8997D /* Result.swift */; };
+		E372654E2ACE00CA00E8997D /* EffectsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = E372654D2ACE00CA00E8997D /* EffectsLibrary */; };
 		E3963A232ACA198C0032D4B1 /* CounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A222ACA198C0032D4B1 /* CounterApp.swift */; };
 		E3963A252ACA198C0032D4B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A242ACA198C0032D4B1 /* ContentView.swift */; };
 		E3963A272ACA198D0032D4B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3963A262ACA198D0032D4B1 /* Assets.xcassets */; };
@@ -50,6 +52,7 @@
 		E37265442ACD4A0C00E8997D /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		E37265462ACD4F0F00E8997D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		E37265482ACD4F5600E8997D /* PlayerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerResultView.swift; sourceTree = "<group>"; };
+		E372654A2ACDE01B00E8997D /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E3963A1F2ACA198C0032D4B1 /* Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3963A222ACA198C0032D4B1 /* CounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterApp.swift; sourceTree = "<group>"; };
 		E3963A242ACA198C0032D4B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E372654E2ACE00CA00E8997D /* EffectsLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +168,7 @@
 				E3963A502ACA24660032D4B1 /* Player.swift */,
 				E3963A542ACA26DB0032D4B1 /* Counter.swift */,
 				E3963A5E2ACB8EEC0032D4B1 /* Setting.swift */,
+				E372654A2ACDE01B00E8997D /* Result.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +213,9 @@
 			dependencies = (
 			);
 			name = Counter;
+			packageProductDependencies = (
+				E372654D2ACE00CA00E8997D /* EffectsLibrary */,
+			);
 			productName = Counter;
 			productReference = E3963A1F2ACA198C0032D4B1 /* Counter.app */;
 			productType = "com.apple.product-type.application";
@@ -280,6 +288,9 @@
 				Base,
 			);
 			mainGroup = E3963A162ACA198C0032D4B1;
+			packageReferences = (
+				E372654C2ACE00CA00E8997D /* XCRemoteSwiftPackageReference "effects-library" */,
+			);
 			productRefGroup = E3963A202ACA198C0032D4B1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -328,6 +339,7 @@
 				E3963A252ACA198C0032D4B1 /* ContentView.swift in Sources */,
 				E3963A612ACD36190032D4B1 /* AddPlayerView.swift in Sources */,
 				E37265472ACD4F0F00E8997D /* ResultView.swift in Sources */,
+				E372654B2ACDE01B00E8997D /* Result.swift in Sources */,
 				E3963A632ACD43390032D4B1 /* PlayerCheckoutView.swift in Sources */,
 				E3963A532ACA26060032D4B1 /* CounterViewModel.swift in Sources */,
 				E37265452ACD4A0C00E8997D /* CheckoutView.swift in Sources */,
@@ -425,6 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "1250 Poker";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -480,6 +493,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "1250 Poker";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -693,6 +707,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E372654C2ACE00CA00E8997D /* XCRemoteSwiftPackageReference "effects-library" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GetStream/effects-library";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E372654D2ACE00CA00E8997D /* EffectsLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E372654C2ACE00CA00E8997D /* XCRemoteSwiftPackageReference "effects-library" */;
+			productName = EffectsLibrary;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E3963A172ACA198C0032D4B1 /* Project object */;
 }

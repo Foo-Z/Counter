@@ -26,6 +26,7 @@ struct SettingView: View {
                             Text("Buy In chips")
                             Spacer()
                             TextField("", value: $defaultBuyIn, format: .number)
+                                .keyboardType(.numberPad)
                                 .textFieldStyle(.roundedBorder)
                                 .frame(width: 100)
                             Button("OK") {
@@ -39,6 +40,7 @@ struct SettingView: View {
                             Text("Chip value")
                             Spacer()
                             TextField("", value: $defaultChipValue, format: .number)
+                                .keyboardType(.numberPad)
                                 .textFieldStyle(.roundedBorder)
                                 .frame(width: 100)
                             Button("OK") {
