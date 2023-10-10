@@ -37,7 +37,7 @@ struct ResultView: View {
                 Text("Chip leader is: \(getChipLeader())").font(.title2)
             }
             FireworksView()
-        }.frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+        }.frame(height: 90)
         VStack {
             List {
                 ForEach(results.last?.wins ?? []) { player in

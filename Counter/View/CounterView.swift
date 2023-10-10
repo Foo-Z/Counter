@@ -45,8 +45,9 @@ struct CounterView: View {
                     })
                 }
             }
-            .navigationBarBackButtonHidden()
+            //.navigationBarBackButtonHidden()
             VStack(spacing: 10) {
+                Text("Average chips: \(getAverageChips())")
                 Text("Total chips are: \(getTotalChips())")
                 Text("Total buy in value is: $ \(getTotalBuyIn())")
             }
@@ -74,6 +75,13 @@ struct CounterView: View {
     
     func getTotalBuyIn() -> String {
         String(format: "%.2f", getChipValue() * Float(getTotalChips()))
+    }
+    
+    func getAverageChips() -> Int {
+        if players.isEmpty {
+            return 0
+        }
+        return getTotalChips() / players.count
     }
 }
 

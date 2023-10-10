@@ -12,6 +12,11 @@
 		E37265492ACD4F5600E8997D /* PlayerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265482ACD4F5600E8997D /* PlayerResultView.swift */; };
 		E372654B2ACDE01B00E8997D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372654A2ACDE01B00E8997D /* Result.swift */; };
 		E372654E2ACE00CA00E8997D /* EffectsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = E372654D2ACE00CA00E8997D /* EffectsLibrary */; };
+		E37265502AD208A100E8997D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372654F2AD208A100E8997D /* HomeView.swift */; };
+		E37265522AD2161200E8997D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265512AD2161200E8997D /* MainView.swift */; };
+		E37265542AD22EDB00E8997D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265532AD22EDB00E8997D /* HistoryView.swift */; };
+		E37265562AD2364D00E8997D /* PlayerVpipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265552AD2364D00E8997D /* PlayerVpipView.swift */; };
+		E37265582AD2374F00E8997D /* VpipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265572AD2374F00E8997D /* VpipView.swift */; };
 		E3963A232ACA198C0032D4B1 /* CounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A222ACA198C0032D4B1 /* CounterApp.swift */; };
 		E3963A252ACA198C0032D4B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A242ACA198C0032D4B1 /* ContentView.swift */; };
 		E3963A272ACA198D0032D4B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3963A262ACA198D0032D4B1 /* Assets.xcassets */; };
@@ -53,6 +58,11 @@
 		E37265462ACD4F0F00E8997D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		E37265482ACD4F5600E8997D /* PlayerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerResultView.swift; sourceTree = "<group>"; };
 		E372654A2ACDE01B00E8997D /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		E372654F2AD208A100E8997D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E37265512AD2161200E8997D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E37265532AD22EDB00E8997D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		E37265552AD2364D00E8997D /* PlayerVpipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVpipView.swift; sourceTree = "<group>"; };
+		E37265572AD2374F00E8997D /* VpipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpipView.swift; sourceTree = "<group>"; };
 		E3963A1F2ACA198C0032D4B1 /* Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3963A222ACA198C0032D4B1 /* CounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterApp.swift; sourceTree = "<group>"; };
 		E3963A242ACA198C0032D4B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -193,6 +203,11 @@
 				E37265442ACD4A0C00E8997D /* CheckoutView.swift */,
 				E37265462ACD4F0F00E8997D /* ResultView.swift */,
 				E37265482ACD4F5600E8997D /* PlayerResultView.swift */,
+				E372654F2AD208A100E8997D /* HomeView.swift */,
+				E37265512AD2161200E8997D /* MainView.swift */,
+				E37265532AD22EDB00E8997D /* HistoryView.swift */,
+				E37265552AD2364D00E8997D /* PlayerVpipView.swift */,
+				E37265572AD2374F00E8997D /* VpipView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,17 +349,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3963A5F2ACB8EEC0032D4B1 /* Setting.swift in Sources */,
+				E37265522AD2161200E8997D /* MainView.swift in Sources */,
 				E3963A5D2ACA8DA70032D4B1 /* StartView.swift in Sources */,
 				E3963A552ACA26DB0032D4B1 /* Counter.swift in Sources */,
 				E3963A252ACA198C0032D4B1 /* ContentView.swift in Sources */,
 				E3963A612ACD36190032D4B1 /* AddPlayerView.swift in Sources */,
+				E37265502AD208A100E8997D /* HomeView.swift in Sources */,
 				E37265472ACD4F0F00E8997D /* ResultView.swift in Sources */,
 				E372654B2ACDE01B00E8997D /* Result.swift in Sources */,
 				E3963A632ACD43390032D4B1 /* PlayerCheckoutView.swift in Sources */,
 				E3963A532ACA26060032D4B1 /* CounterViewModel.swift in Sources */,
 				E37265452ACD4A0C00E8997D /* CheckoutView.swift in Sources */,
+				E37265542AD22EDB00E8997D /* HistoryView.swift in Sources */,
 				E3963A592ACA32980032D4B1 /* CounterView.swift in Sources */,
+				E37265562AD2364D00E8997D /* PlayerVpipView.swift in Sources */,
 				E3963A572ACA328C0032D4B1 /* PlayerView.swift in Sources */,
+				E37265582AD2374F00E8997D /* VpipView.swift in Sources */,
 				E37265492ACD4F5600E8997D /* PlayerResultView.swift in Sources */,
 				E3963A5B2ACA79B90032D4B1 /* SettingView.swift in Sources */,
 				E3963A512ACA24670032D4B1 /* Player.swift in Sources */,

@@ -27,7 +27,7 @@ struct CounterApp: App {
     
     var body: some Scene {
         WindowGroup {
-            StartView()
+            MainView()
 //            CounterView(viewModel: CounterViewModel())
         }
         .modelContainer(modelContainer)
