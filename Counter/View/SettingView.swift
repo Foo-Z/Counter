@@ -15,6 +15,8 @@ struct SettingView: View {
     @Environment(\.modelContext) private var context
     @Query private var settings: [Setting]
     @Query private var players: [Player]
+    @State private var showingAlert = false
+
     
     var body: some View {
         Text("Settings")
@@ -63,10 +65,21 @@ struct SettingView: View {
                 })
             }
         }
-        Button("Start a new session") {
-            clearLastSession()
+        Button("Reset session") {
+            showingAlert = true
         }
         .buttonStyle(BorderedProminentButtonStyle())
+        .alert(isPresented: $showingAlert) {
+            Alert(
+                title: Text("This will remove all existing players."),
+                message: Text("Are you sure?"),
+                primaryButton: .destructive(Text("OK")) {
+                    clearLastSession()
+                    dismiss()
+                },
+                secondaryButton: .cancel()
+            )
+        }
         VStack(spacing: 10) {
             Text("Current Default buy in chips are : \(getIncrement())")
             Text("Current Default value per chip is : $ \(getChipValue())")
