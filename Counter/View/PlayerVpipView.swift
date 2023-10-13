@@ -10,7 +10,6 @@ import SwiftUI
 struct PlayerVpipView: View {
     @Environment(\.modelContext) private var context
     var currentPlayer: Player
-    var hands: Int
     
     var body: some View {
         HStack {
@@ -20,31 +19,33 @@ struct PlayerVpipView: View {
                 currentPlayer.vpip += 1
                 try? context.save()
             }
-            .font(.title2)
-                        Text("\(currentPlayer.vpip)")
-                            .font(.title)
-            
-//            Text("\(getVpip())")
-//                .font(.title)
-//            Button("PFR") {
-//                currentPlayer.pfr += 1
-//                try? context.save()
-//            }
-//            .font(.title2)
-//            Text("\(currentPlayer.pfr)")
-//                .font(.title)
+            .buttonStyle(BorderedProminentButtonStyle())
+            Text("\(currentPlayer.vpip)")
+            Text("   ")
+            Button("PFR") {
+                currentPlayer.pfr += 1
+                try? context.save()
+            }
+            .buttonStyle(BorderedProminentButtonStyle())
+            Text("\(currentPlayer.pfr)")
         }
     }
-    func getVpip() -> String {
-        if hands == 0 {
-            return "0.00 %"
-        }
-        return String(format: "%.2f %", currentPlayer.vpip / hands)
-    }
+//    func getVpip() -> String {
+//        if total_hands == 0 {
+//            return "0.00 %"
+//        }
+//        return String(format: "%.2f %", currentPlayer.vpip / getTotalHand())
+//    }
+//    func getPfr() -> String {
+//        if total_hands == 0 {
+//            return "0.00 %"
+//        }
+//        return String(format: "%.2f %", currentPlayer.pfr / getTotalHand())
+//    }
 }
 
 #Preview {
     PlayerVpipView(
-        currentPlayer: Player(name: "test"), hands: 1
+        currentPlayer: Player(name: "test")
     )
 }

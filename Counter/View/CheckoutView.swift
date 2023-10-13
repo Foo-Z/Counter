@@ -28,6 +28,8 @@ struct CheckoutView: View {
                     saveResult()
                 }
             }
+            .buttonStyle(BorderedProminentButtonStyle())
+            .font(.title2)
         }
         .onTapGesture {
             self.hideKeyboard()

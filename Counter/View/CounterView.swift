@@ -15,6 +15,7 @@ struct CounterView: View {
     @Query private var settings: [Setting]
     @State var showingAddPlayer: Bool = false
     @State var showingSettings: Bool =  false
+    @State var showingStartPage: Bool = false
     
     
     var body: some View {
@@ -27,11 +28,12 @@ struct CounterView: View {
                     SettingView()
                 })
                 Spacer()
-                Button("Add New Player") {
-                    showingAddPlayer = true
-                }.sheet(isPresented: $showingAddPlayer, content: {
-                    AddPlayerView()
+                Button("Add New Session") {
+                    showingStartPage = true
+                }.sheet(isPresented: $showingStartPage, content: {
+                    StartView()
                 })
+                
             }
             VStack {
                 List {
@@ -46,15 +48,31 @@ struct CounterView: View {
                 }
             }
             //.navigationBarBackButtonHidden()
-            VStack(spacing: 10) {
-                Text("Average chips: \(getAverageChips())")
-                Text("Total chips are: \(getTotalChips())")
-                Text("Total buy in value is: $ \(getTotalBuyIn())")
+            HStack {
+                Spacer()
+                VStack(spacing: 10) {
+                    Text("Average chips: \(getAverageChips())")
+                    Text("Total chips are: \(getTotalChips())")
+                    Text("Total buy in value is: $ \(getTotalBuyIn())")
+                }
+                Button("+") {
+                    showingAddPlayer = true
+                }.sheet(isPresented: $showingAddPlayer, content: {
+                    AddPlayerView()
+                })
+                .buttonStyle(BorderedProminentButtonStyle())
+                .padding(30)
+                .font(.title2)
+                //Spacer()
+                
             }
             NavigationLink("Checkout") {
                 CheckoutView()
             }
+            .buttonStyle(BorderedProminentButtonStyle())
+            .font(.title2)
         }
+        .navigationBarBackButtonHidden()
     }
     
     func removePlayer(_ player: Player) {

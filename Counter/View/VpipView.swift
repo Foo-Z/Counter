@@ -13,26 +13,35 @@ struct VpipView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @Query private var players: [Player]
-    @State var countHands = 0
     
     var body: some View {
-        VStack {
-            HStack(spacing: 20) {
-                Text("Total hands played: \(countHands)")
-                Spacer()
-                Button("+1") {
-                    countHands += 1
-                }
+        NavigationStack {
+            Text("VPIP & PFR")
                 .font(.title2)
-                .buttonStyle(BorderedProminentButtonStyle())
-            }
-            .padding(20)
-            List {
-                ForEach(players) { player in
-                    PlayerVpipView(currentPlayer: player, hands: countHands)
+                .padding(10)
+            Text("Total hands played: \(getTotalHand())")
+                .font(.title3)
+                .padding(10)
+            VStack {
+                List {
+                    ForEach(players) { player in
+                        PlayerVpipView(currentPlayer: player)
+                    }
                 }
             }
+            NavigationLink("Get Result") {
+                VpipResultView(total_hands: getTotalHand())
+            }
+            .buttonStyle(BorderedProminentButtonStyle())
+            .font(.title2)
         }
+    }
+    func getTotalHand() -> Int {
+        var hands = 0
+        for player in players {
+            hands += player.pfr
+        }
+        return hands
     }
 }
 

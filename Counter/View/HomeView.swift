@@ -13,10 +13,11 @@ struct HomeView: View {
     @Query private var players: [Player]
     @State private var showingAlert = false
     @State private var navLinkActive = false
-    
     var body: some View {
         NavigationStack {
-            Text("1250 Poker Room").font(.title).padding(20)
+            Text("1250 Poker Room")
+                .font(.title)
+                .padding(20)
             Spacer()
             VStack {
 //                Button("Start a new session") {
@@ -35,8 +36,8 @@ struct HomeView: View {
 //                .navigationDestination(isPresented: $navLinkActive) {
 //                    StartView()
 //                }
-//                
-                NavigationLink(destination: CounterView()) {
+                
+                NavigationLink(destination: StartView()) {
                     Text("Start a new session")
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
@@ -72,7 +73,6 @@ struct HomeView: View {
                 
             }
             Spacer()
-
 //            TabView {
 //                HomeView()
 //                    .tabItem {

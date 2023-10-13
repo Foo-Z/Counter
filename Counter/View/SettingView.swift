@@ -9,15 +9,17 @@ import SwiftUI
 import SwiftData
 
 struct SettingView: View {
-    @State private var defaultBuyIn: Int = 200
+    @State private var defaultBuyIn: Int = 500
     @State private var defaultChipValue: Float = 0.1
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     @Query private var settings: [Setting]
+    @Query private var players: [Player]
     
     var body: some View {
         Text("Settings")
             .font(.title)
+            .padding(10)
         VStack(alignment: .leading, spacing: 5) {
             List {
                 ForEach(settings) {setting in
@@ -35,6 +37,7 @@ struct SettingView: View {
                                 try? context.save()
                                 dismiss()
                             }
+                            .buttonStyle(BorderedProminentButtonStyle())
                         }
                         HStack {
                             Text("Chip value")
@@ -49,6 +52,7 @@ struct SettingView: View {
                                 try? context.save()
                                 dismiss()
                             }
+                            .buttonStyle(BorderedProminentButtonStyle())
                         }
                     }
                     .padding(10)
@@ -59,11 +63,21 @@ struct SettingView: View {
                 })
             }
         }
+        Button("Start a new session") {
+            clearLastSession()
+        }
+        .buttonStyle(BorderedProminentButtonStyle())
         VStack(spacing: 10) {
             Text("Current Default buy in chips are : \(getIncrement())")
             Text("Current Default value per chip is : $ \(getChipValue())")
         }
         Spacer()
+        
+    }
+    func clearLastSession() {
+        for player in players {
+            context.delete(player)
+        }
         
     }
     func removeSettings(_ setting: Setting) {

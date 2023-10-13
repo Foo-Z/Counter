@@ -21,13 +21,14 @@ struct PlayerView: View {
                 currentPlayer.buyIn += getIncrement()
                 try? context.save()
             }
-            .font(.title2)
+            .buttonStyle(BorderedProminentButtonStyle())
+           // .font(.title3)
             Text("\(currentPlayer.buyIn)")
-                .font(.title)
+               // .font(.title3)
         }
     }
     func getIncrement() -> Int {
-        settings.first?.increment ?? 200
+        settings.first?.increment ?? 500
     }
 }
 #Preview {
