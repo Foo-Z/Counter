@@ -21,7 +21,7 @@ struct CheckoutView: View {
                 }
             }
             VStack(spacing: 10) {
-                Text("Total chips are: \(getTotalChips())")
+                Text("\(chipMessage())")
             }
             NavigationLink("Get Result") {
                 ResultView().onAppear() {
@@ -52,12 +52,22 @@ struct CheckoutView: View {
         }
         context.insert(result)
     }
-    func getTotalChips() -> Int {
-        var totalChips: Int = 0
-        for player in players {
-            totalChips += player.buyIn - player.cashOut
+    func chipMessage() -> String {
+        var chipDiff = getChipDiff()
+        if chipDiff == 0 {
+            return "Total checkout chips and buyin chips are matching."
+        } else if chipDiff > 0 {
+            return "We are long for \(chipDiff) chips."
+        } else {
+            return "We are short for \(-chipDiff) chips"
         }
-        return totalChips
+    }
+    func getChipDiff() -> Int {
+        var chipDiff: Int = 0
+        for player in players {
+            chipDiff += player.buyIn - player.cashOut
+        }
+        return chipDiff
     }
 }
 

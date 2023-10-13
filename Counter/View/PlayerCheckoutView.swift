@@ -13,6 +13,7 @@ struct PlayerCheckoutView: View {
     var currentPlayer: Player
     @State private var cashout: Int?
     @State private var showingAlert = false
+    @FocusState var isOnFocused: Bool
     
     var body: some View {
         HStack {
@@ -22,23 +23,16 @@ struct PlayerCheckoutView: View {
                 .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 100)
-//            Button("OK") {
-//                currentPlayer.cashOut = cashout ?? 0
-//                //currentPlayer.profit = currentPlayer.cashOut - currentPlayer.buyIn
-//                try? context.save()
-//                showingAlert = true
-//            }
-//            .alert("profit: \(currentPlayer.cashOut - currentPlayer.buyIn)", isPresented: $showingAlert){
-//                Button("OK", role: .cancel) {}
-//            }
+                .focused($isOnFocused)
+                .onChange(of: !isOnFocused, updateCheckout)
         }
-        
         .onTapGesture {
-            currentPlayer.cashOut = cashout ?? 0
-            //currentPlayer.profit = currentPlayer.cashOut - currentPlayer.buyIn
-            try? context.save()
             self.hideKeyboard()
         }
+    }
+    func updateCheckout() {
+        currentPlayer.cashOut = cashout ?? 0
+        try? context.save()
     }
 }
 #Preview {
