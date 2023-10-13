@@ -17,7 +17,6 @@ struct CounterView: View {
     @State var showingSettings: Bool =  false
     @State var showingStartPage: Bool = false
     
-    
     var body: some View {
         NavigationStack {
             HStack {
@@ -39,6 +38,13 @@ struct CounterView: View {
                 List {
                     ForEach(players) { player in
                         PlayerView(currentPlayer: player)
+                            .swipeActions(edge: .leading) {
+                                Button("Undo") {
+                                    player.buyIn -= getIncrement()
+                                    try? context.save()
+                                }
+                                .tint(.orange)
+                            }
                     }
                     .onDelete(perform: { indexSet in
                         for index in indexSet {
@@ -78,7 +84,9 @@ struct CounterView: View {
     func removePlayer(_ player: Player) {
         context.delete(player)
     }
-    
+    func getIncrement() -> Int {
+        settings.first?.increment ?? 500
+    }
     func getTotalChips() -> Int {
         var totalChips: Int = 0
         for player in players {

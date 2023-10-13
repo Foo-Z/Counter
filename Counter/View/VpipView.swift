@@ -26,6 +26,18 @@ struct VpipView: View {
                 List {
                     ForEach(players) { player in
                         PlayerVpipView(currentPlayer: player)
+                            .swipeActions(edge: .leading) {
+                                Button("-VPIP") {
+                                    player.vpip -= 1
+                                    try? context.save()
+                                }
+                                .tint(.purple)
+                                Button("-PFR") {
+                                    player.pfr -= 1
+                                    try? context.save()
+                                }
+                                .tint(.orange)
+                            }
                     }
                 }
             }
