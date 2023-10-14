@@ -28,13 +28,6 @@ struct VpipResultView: View {
             }
         }
     }
-//    func getTotalHand() -> Int {
-//        var hands = 0
-//        for player in players {
-//            hands += player.pfr
-//        }
-//        return hands
-//    }
 }
 
 #Preview {

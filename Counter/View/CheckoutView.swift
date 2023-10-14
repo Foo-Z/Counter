@@ -11,8 +11,13 @@ import SwiftData
 struct CheckoutView: View {
     @Environment(\.modelContext) private var context
     @Query private var players: [Player]
+    @Query private var settings: [Setting]
+    @Query private var results: [Result]
     var body: some View {
         NavigationStack {
+            Text("Session Date: \(getSessionName())")
+                .font(.title2)
+                .padding(10)
             VStack {
                 List {
                     ForEach(players) { player in
@@ -24,36 +29,47 @@ struct CheckoutView: View {
                 Text("\(chipMessage())")
             }
             NavigationLink("Get Result") {
-                ResultView().onAppear() {
+                ResultView(resultId: getSessionName()).onAppear() {
                     saveResult()
                 }
             }
             .buttonStyle(BorderedProminentButtonStyle())
             .font(.title2)
+            .padding(10)
         }
         .onTapGesture {
             self.hideKeyboard()
         }
     }
     func saveResult() {
+        if results.last?.name ?? "" == getSessionName() {
+            return
+        }
         let result = Result()
+        result.name = getSessionName()
         for player in players {
+            let playerResult = Result.Player(
+                name: player.name,
+                buyin: getBuyinValue(buyin: player.buyIn),
+                profit: getProfitValue(profit: abs(player.cashOut - player.buyIn)),
+                profitValue: player.cashOut - player.buyIn
+            )
             if player.cashOut >= player.buyIn {
-                result.wins.append(player)
+                result.wins.append(playerResult)
             } else {
-                result.loses.append(player)
+                result.loses.append(playerResult)
             }
-        }
-        result.wins.sort {
-            ($0.cashOut - $0.buyIn) > ($1.cashOut - $1.buyIn)
-        }
-        result.loses.sort {
-            ($0.cashOut - $0.buyIn) > ($1.cashOut - $1.buyIn)
         }
         context.insert(result)
     }
+    func getSessionName() -> String {
+        let dateFormatter = DateFormatter()
+        let date = Date.now
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        return dateFormatter.string(from: date)
+    }
     func chipMessage() -> String {
-        var chipDiff = getChipDiff()
+        let chipDiff = getChipDiff()
         if chipDiff == 0 {
             return "Total checkout chips and buyin chips are matching."
         } else if chipDiff > 0 {
@@ -69,6 +85,16 @@ struct CheckoutView: View {
         }
         return chipDiff
     }
+    func getChipValue() -> Float {
+        settings.first?.valuePerChip ?? 0.1
+    }
+    func getBuyinValue(buyin: Int) -> String {
+        String(format: "$%.2f", Float(buyin) * getChipValue())
+    }
+    func getProfitValue(profit: Int) -> String {
+        String(format: "$%.2f", Float(profit) * getChipValue())
+    }
+    
 }
 
 #Preview {

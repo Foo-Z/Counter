@@ -22,9 +22,7 @@ struct PlayerView: View {
                 try? context.save()
             }
             .buttonStyle(BorderedProminentButtonStyle())
-           // .font(.title3)
             Text("\(currentPlayer.buyIn)")
-               // .font(.title3)
         }
     }
     func getIncrement() -> Int {

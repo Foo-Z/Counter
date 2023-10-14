@@ -19,12 +19,6 @@ struct PlayerVpipResultView: View {
     }
     
     func getVpip() -> String {
-//        if total_hands == 0 {
-//            return "0.00 %"
-//        }
-//        print(total_hands)
-//        print(currentPlayer.vpip)
-//        print(currentPlayer.vpip / total_hands)
         return String(format: "%.1f %", Float(currentPlayer.vpip) / Float(total_hands) * 100)
     }
     func getPfr() -> String {

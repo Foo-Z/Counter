@@ -32,8 +32,8 @@ struct CounterView: View {
                 }.sheet(isPresented: $showingStartPage, content: {
                     StartView()
                 })
-                
             }
+            .padding(5)
             VStack {
                 List {
                     ForEach(players) { player in
@@ -75,12 +75,12 @@ struct CounterView: View {
             NavigationLink("Checkout") {
                 CheckoutView()
             }
+            .padding(10)
             .buttonStyle(BorderedProminentButtonStyle())
             .font(.title2)
         }
         .navigationBarBackButtonHidden()
     }
-    
     func removePlayer(_ player: Player) {
         context.delete(player)
     }

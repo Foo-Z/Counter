@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct VpipView: View {
-   // @Environment(\) var countHands
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @Query private var players: [Player]
@@ -46,6 +45,7 @@ struct VpipView: View {
             }
             .buttonStyle(BorderedProminentButtonStyle())
             .font(.title2)
+            .padding(10)
         }
     }
     func getTotalHand() -> Int {

@@ -11,31 +11,22 @@ import SwiftData
 struct PlayerResultView: View {
     @Environment(\.modelContext) private var context
     @Query private var settings: [Setting]
-    var currentPlayer: Player
+    var currentPlayer: Result.Player
     @State private var result: Float = 0.0
     var body: some View {
         HStack {
             Text("\(currentPlayer.name) \(getResult())")
         }
     }
-    func getChipValue() -> Float {
-        settings.first?.valuePerChip ?? 0.1
-    }
-    
-//    func buyinValue() -> String {
-//        let biv = Float(currentPlayer.buyIn) * getChipValue()
-//        return String(format: "%.2f", biv)
-//    }
     
     func getResult() -> String {
-        let diff = currentPlayer.cashOut - currentPlayer.buyIn
+        let diff = currentPlayer.profitValue
         let r = diff < 0 ? "lose" : "win"
-        let profit = Float(diff) * getChipValue()
-        return "\(r) \(String(format: "%.2f", profit)) Dollars"
+        return "\(r) \(currentPlayer.profit)"
         
     }
 }
 
 #Preview {
-    PlayerResultView(currentPlayer: Player(name: "test"))
+    PlayerResultView(currentPlayer: Result.Player(name: "test", buyin: "10", profit: "20", profitValue: 20))
 }

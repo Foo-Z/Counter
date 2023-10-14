@@ -10,10 +10,16 @@ import SwiftData
 
 @Model
 class Result {
-    var id: String = UUID().uuidString
-    var name: String
-    var wins: [Player]
-    var loses: [Player]
+    struct Player: Identifiable, Codable, Hashable {
+        var id = UUID()
+        var name: String
+        var buyin: String
+        var profit: String
+        var profitValue: Int
+    }
+    @Attribute(.unique) var name: String
+    var wins: [Result.Player]
+    var loses: [Result.Player]
     
     init() {
         let dateFormatter = DateFormatter()
@@ -22,4 +28,5 @@ class Result {
         wins = []
         loses = []
     }
+
 }

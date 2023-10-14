@@ -20,22 +20,6 @@ struct HomeView: View {
                 .padding(20)
             Spacer()
             VStack {
-//                Button("Start a new session") {
-//                    showingAlert = true
-//                }
-//                .buttonStyle(BorderedProminentButtonStyle())
-//                .font(.title2)
-//                .alert("This will clear the current session", isPresented: $showingAlert) {
-//                    Button("Ok") {
-//                        navLinkActive = true
-//                        clearLastSession()
-//                    }
-//                    
-//                    Button("Cancel", role: .cancel) {}
-//                }
-//                .navigationDestination(isPresented: $navLinkActive) {
-//                    StartView()
-//                }
                 
                 NavigationLink(destination: StartView()) {
                     Text("Start a new session")
@@ -52,12 +36,6 @@ struct HomeView: View {
                 .buttonStyle(BorderedProminentButtonStyle())
                 .font(.title2)
                 
-//                NavigationLink(destination: ResultView()) {
-//                    Text("Result")
-//                }
-//                .buttonStyle(BorderedProminentButtonStyle())
-//                .font(.title2)
-                
                 NavigationLink(destination: VpipView()) {
                     Text("VPIP")
                 }
@@ -65,7 +43,7 @@ struct HomeView: View {
                 .font(.title2)
                 
                 
-                NavigationLink(destination: HistoryView()) {
+                NavigationLink(destination: HistoricalResultView()) {
                     Text("History")
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
@@ -73,12 +51,6 @@ struct HomeView: View {
                 
             }
             Spacer()
-//            TabView {
-//                HomeView()
-//                    .tabItem {
-//                        Label("Home", systemImage: "heart")
-//                    }
-//            }
         }
     }
     func clearLastSession() {

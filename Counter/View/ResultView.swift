@@ -28,8 +28,8 @@ struct ResultView: View {
 //    let wins = #Predicate<Player> { player in
 //        player.profit >= 0
 //    }
-    @Query private var players: [Player]
-    //var updatedPlayers = updatePlayers()
+    //@Query private var players: [Player]
+    var resultId: String
     var body: some View {
         ZStack {
             VStack {
@@ -56,24 +56,12 @@ struct ResultView: View {
             }
         }
     }
-    func updatePlayers() -> (win: [Player], lose: [Player]) {
-        var win: [Player] = []
-        var lose: [Player] = []
-        for player in players {
-            if player.cashOut >= player.buyIn {
-                win.append(player)
-            } else {
-                lose.append(player)
-            }
-        }
-        return (win, lose)
-    }
     func getChipLeader() -> String {
         var maxProfit = 0
         var leader: String = ""
         for player in results.last?.wins ?? [] {
-            if player.cashOut - player.buyIn > maxProfit {
-                maxProfit = player.cashOut - player.buyIn
+            if player.profitValue > maxProfit {
+                maxProfit = player.profitValue
                 leader = player.name
             }
         }
@@ -82,5 +70,5 @@ struct ResultView: View {
 }
 
 #Preview {
-    ResultView()
+    ResultView(resultId: "uuid")
 }

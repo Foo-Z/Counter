@@ -14,19 +14,18 @@ struct AddPlayerView: View {
     @State private var buyIn: Int = 500
     var body: some View {
         Text("Add New Player")
-            .font(.title)
+            .font(.title2)
             .padding(10)
         Spacer()
         VStack(alignment: .leading, spacing: 5) {
             List {
                 VStack {
-                    
                     HStack {
                         Text("Player name: ")
                         Spacer()
                         TextField("", text: $name)
                             .textFieldStyle(.roundedBorder)
-                            .frame(width: 150)
+                            .frame(width: 100)
                     }
                     HStack {
                         Text("Buy In chips: ")
@@ -34,9 +33,9 @@ struct AddPlayerView: View {
                         TextField("", value: $buyIn, format: .number)
                             .keyboardType(.numberPad)
                             .textFieldStyle(.roundedBorder)
-                            .frame(width: 150)
+                            .frame(width: 100)
                     }
-                    HStack (alignment:.center, spacing: 10) {
+                    HStack (alignment:.center) {
                         Button("Cancel") {
                             dismiss()
                         }
@@ -47,8 +46,9 @@ struct AddPlayerView: View {
                         }
                         .buttonStyle(BorderedProminentButtonStyle())
                     }
-                    .padding(80)
+                    //.padding(80)
                 }
+                .padding(10)
             }
         }
 
