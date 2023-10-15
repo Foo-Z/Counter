@@ -24,6 +24,7 @@ struct StartView: View {
     @State private var player10: String = ""
     @State private var defaultBuyIn: Int = 500
     @State private var defaultValuePerChip: Float = 0.1
+    @State private var defaultGameLevel: String = "0.5/0.5"
     @Query private var settings: [Setting]
     @Environment(\.dismiss) private var dismiss
 
@@ -121,6 +122,13 @@ struct StartView: View {
                                 .textFieldStyle(.roundedBorder)
                                 .frame(width: 150)
                         }
+                        HStack {
+                            Text("Game Level: ")
+                            Spacer()
+                            TextField("", text: $defaultGameLevel)
+                                .textFieldStyle(.roundedBorder)
+                                .frame(width: 150)
+                        }
                         Spacer()
                     }
                 }
@@ -134,10 +142,11 @@ struct StartView: View {
                // CounterView().onAppear {
                     
                     if settings.isEmpty {
-                        context.insert(Setting(increment: defaultBuyIn, valuePerChip: defaultValuePerChip))
+                        context.insert(Setting(increment: defaultBuyIn, valuePerChip: defaultValuePerChip, gameLevel: defaultGameLevel))
                     } else {
                         settings.first?.increment = defaultBuyIn
                         settings.first?.valuePerChip = defaultValuePerChip
+                        settings.first?.gameLevel = defaultGameLevel
                         try? context.save()
                     }
                 defaultBuyIn = settings.first?.increment ?? 500

@@ -15,8 +15,8 @@ struct CheckoutView: View {
     @Query private var results: [Result]
     var body: some View {
         NavigationStack {
-            Text("Session Date: \(getSessionName())")
-                .font(.title2)
+            Text("Session: \(getSessionName())")
+                .font(.title3)
                 .padding(10)
             VStack {
                 List {
@@ -42,11 +42,12 @@ struct CheckoutView: View {
         }
     }
     func saveResult() {
-        if results.last?.name ?? "" == getSessionName() {
+        let sessionName = getSessionName()
+        if results.last?.name ?? "" == sessionName{
             return
         }
         let result = Result()
-        result.name = getSessionName()
+        result.name = sessionName
         for player in players {
             let playerResult = Result.Player(
                 name: player.name,
@@ -62,12 +63,7 @@ struct CheckoutView: View {
         }
         context.insert(result)
     }
-    func getSessionName() -> String {
-        let dateFormatter = DateFormatter()
-        let date = Date.now
-        dateFormatter.dateFormat = "YYYY/MM/dd"
-        return dateFormatter.string(from: date)
-    }
+
     func chipMessage() -> String {
         let chipDiff = getChipDiff()
         if chipDiff == 0 {
@@ -88,13 +84,24 @@ struct CheckoutView: View {
     func getChipValue() -> Float {
         settings.first?.valuePerChip ?? 0.1
     }
+    func getGameLevel() -> String {
+        settings.first?.gameLevel ?? "0.5/0.5"
+    }
     func getBuyinValue(buyin: Int) -> String {
         String(format: "$%.2f", Float(buyin) * getChipValue())
     }
     func getProfitValue(profit: Int) -> String {
         String(format: "$%.2f", Float(profit) * getChipValue())
     }
-    
+    func getGameSize() -> Int {
+        players.count
+    }
+    func getSessionName() -> String {
+        let dateFormatter = DateFormatter()
+        let date = Date.now
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        return "\(dateFormatter.string(from: date))  \(getGameLevel())  MAX\(getGameSize())"
+    }
 }
 
 #Preview {

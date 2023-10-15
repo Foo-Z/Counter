@@ -11,6 +11,7 @@ import SwiftData
 struct SettingView: View {
     @State private var defaultBuyIn: Int = 500
     @State private var defaultChipValue: Float = 0.1
+    @State private var defaultGameLevel: String = "0.5/0.5"
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     @Query private var settings: [Setting]
@@ -51,6 +52,20 @@ struct SettingView: View {
                             Button("OK") {
                                 setting.valuePerChip = defaultChipValue
                                 defaultChipValue = setting.valuePerChip
+                                try? context.save()
+                                dismiss()
+                            }
+                            .buttonStyle(BorderedProminentButtonStyle())
+                        }
+                        HStack {
+                            Text("Game Level")
+                            Spacer()
+                            TextField("", text: $defaultGameLevel)
+                                .textFieldStyle(.roundedBorder)
+                                .frame(width: 100)
+                            Button("OK") {
+                                setting.gameLevel = defaultGameLevel
+                                defaultGameLevel = setting.gameLevel
                                 try? context.save()
                                 dismiss()
                             }

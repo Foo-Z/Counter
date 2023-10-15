@@ -33,7 +33,7 @@ struct ResultView: View {
     var body: some View {
         ZStack {
             VStack {
-                Text(results.last?.name ?? "").font(.title)
+                Text(results.last?.name ?? "").font(.title3)
                 Text("Chip leader is: \(getChipLeader())").font(.title2)
             }
             FireworksView()

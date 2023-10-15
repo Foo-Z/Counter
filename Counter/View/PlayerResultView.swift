@@ -16,6 +16,8 @@ struct PlayerResultView: View {
     var body: some View {
         HStack {
             Text("\(currentPlayer.name) \(getResult())")
+            Spacer()
+            Text("(\(currentPlayer.buyin) BuyIn)").font(.system(size: 13))
         }
     }
     
