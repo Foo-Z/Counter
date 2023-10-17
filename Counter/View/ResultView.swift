@@ -16,31 +16,20 @@ struct ResultView: View {
 //    init(sort: SortDescriptor<Player>) {
 //        _wins = Query(filter: #Predicate({ $0.profit >= 0 }))
 //    }
-    @Environment(\.modelContext) private var context
-    @Query private var results: [Result]
-   // @Query(filter: #Predicate<Player> { $0.cashOut >= $0.buyIn }) var winPlayers: [Player]
-
-//    let playerPredicate = #Predicate<Player> {
-//        $0.profit >= 0
-//    }
-//    let descriptor = FetchDescriptor<Player>(predicate: playerPredicate)
-//    let wins = try context.fetch(descriptor)
-//    let wins = #Predicate<Player> { player in
-//        player.profit >= 0
-//    }
-    //@Query private var players: [Player]
     var resultId: String
+    @Environment(\.modelContext) private var context
+    @Query() private var results: [Result]
     var body: some View {
         ZStack {
             VStack {
-                Text(results.last?.name ?? "").font(.title3)
+                Text(getResult().name).font(.title3)
                 Text("Chip leader is: \(getChipLeader())").font(.title2)
             }
             FireworksView()
         }.frame(height: 90)
         VStack {
             List {
-                ForEach(results.last?.wins ?? []) { player in
+                ForEach(getResult().wins) { player in
                     PlayerResultView(currentPlayer: player)
                 }
             }
@@ -50,7 +39,7 @@ struct ResultView: View {
         Spacer()
         VStack {
             List {
-                ForEach(results.last?.loses ?? []) { player in
+                ForEach(getResult().loses) { player in
                     PlayerResultView(currentPlayer: player)
                 }
             }
@@ -66,6 +55,12 @@ struct ResultView: View {
             }
         }
         return leader
+    }
+    func getSessionName() -> String {
+        resultId
+    }
+    func getResult() -> Result {
+        try! results.filter(#Predicate { $0.name == resultId }).last ?? Result()
     }
 }
 
