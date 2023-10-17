@@ -106,7 +106,6 @@ struct SettingView: View {
         for player in players {
             context.delete(player)
         }
-        
     }
     func removeSettings(_ setting: Setting) {
         context.delete(setting)

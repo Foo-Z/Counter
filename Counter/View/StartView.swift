@@ -26,7 +26,9 @@ struct StartView: View {
     @State private var defaultValuePerChip: Float = 0.1
     @State private var defaultGameLevel: String = "0.5/0.5"
     @Query private var settings: [Setting]
+    @Query private var players: [Player]
     @Environment(\.dismiss) private var dismiss
+    @State private var showingAlert = false
 
     var body: some View {
         Text("Session Date: \(getSessionName())")
@@ -139,23 +141,37 @@ struct StartView: View {
             Spacer()
                 
             Button("OK") {
+                showingAlert = true
                // CounterView().onAppear {
-                    
-                    if settings.isEmpty {
-                        context.insert(Setting(increment: defaultBuyIn, valuePerChip: defaultValuePerChip, gameLevel: defaultGameLevel))
-                    } else {
-                        settings.first?.increment = defaultBuyIn
-                        settings.first?.valuePerChip = defaultValuePerChip
-                        settings.first?.gameLevel = defaultGameLevel
-                        try? context.save()
-                    }
-                defaultBuyIn = settings.first?.increment ?? 500
-                addPlayers(defaultBuyIn)
-                dismiss()
+//                    
+//                    if settings.isEmpty {
+//                        context.insert(Setting(increment: defaultBuyIn, valuePerChip: defaultValuePerChip, gameLevel: defaultGameLevel))
+//                    } else {
+//                        settings.first?.increment = defaultBuyIn
+//                        settings.first?.valuePerChip = defaultValuePerChip
+//                        settings.first?.gameLevel = defaultGameLevel
+//                        try? context.save()
+//                    }
+//                defaultBuyIn = settings.first?.increment ?? 500
+//                addPlayers(defaultBuyIn)
+//                dismiss()
                     
             }
             .font(.title2)
             .buttonStyle(BorderedProminentButtonStyle())
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text("This will remove all existing players."),
+                    message: Text("Are you sure?"),
+                    primaryButton: .destructive(Text("OK")) {
+                        clearLastSession()
+                        updateSettings()
+                        addPlayers(defaultBuyIn)
+                        dismiss()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
           //  }
 //        }
 //        .navigationBarBackButtonHidden()
@@ -207,6 +223,22 @@ struct StartView: View {
         let date = Date.now
         dateFormatter.dateFormat = "YYYY/MM/dd"
         return dateFormatter.string(from: date)
+    }
+    func clearLastSession() {
+        for player in players {
+            context.delete(player)
+        }
+    }
+    func updateSettings() {
+        if settings.isEmpty {
+            context.insert(Setting(increment: defaultBuyIn, valuePerChip: defaultValuePerChip, gameLevel: defaultGameLevel))
+        } else {
+            settings.first?.increment = defaultBuyIn
+            settings.first?.valuePerChip = defaultValuePerChip
+            settings.first?.gameLevel = defaultGameLevel
+            try? context.save()
+        }
+        defaultBuyIn = settings.first?.increment ?? 500
     }
 }
 struct RowView: View {
