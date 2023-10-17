@@ -56,9 +56,9 @@ struct ResultView: View {
         }
         return leader
     }
-    func getSessionName() -> String {
-        resultId
-    }
+//    func getSessionName() -> String {
+//        resultId
+//    }
     func getResult() -> Result {
         try! results.filter(#Predicate { $0.name == resultId }).last ?? Result()
     }

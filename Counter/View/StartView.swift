@@ -221,7 +221,7 @@ struct StartView: View {
     func getSessionName() -> String {
         let dateFormatter = DateFormatter()
         let date = Date.now
-        dateFormatter.dateFormat = "YYYY/MM/dd"
+        dateFormatter.dateFormat = "YYYY/MM/dd HH:mm"
         return dateFormatter.string(from: date)
     }
     func clearLastSession() {
@@ -230,12 +230,14 @@ struct StartView: View {
         }
     }
     func updateSettings() {
+        let date = Date.now
         if settings.isEmpty {
-            context.insert(Setting(increment: defaultBuyIn, valuePerChip: defaultValuePerChip, gameLevel: defaultGameLevel))
+            context.insert(Setting(increment: defaultBuyIn, valuePerChip: defaultValuePerChip, gameLevel: defaultGameLevel, sessionDate: date))
         } else {
             settings.first?.increment = defaultBuyIn
             settings.first?.valuePerChip = defaultValuePerChip
             settings.first?.gameLevel = defaultGameLevel
+            settings.first?.sessionDate = date
             try? context.save()
         }
         defaultBuyIn = settings.first?.increment ?? 500

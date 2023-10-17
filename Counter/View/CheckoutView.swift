@@ -15,7 +15,7 @@ struct CheckoutView: View {
     @Query private var results: [Result]
     var body: some View {
         NavigationStack {
-            Text("Session: \(getSessionName())")
+            Text("\(getSessionName())")
                 .font(.title3)
                 .padding(10)
             VStack {
@@ -43,7 +43,7 @@ struct CheckoutView: View {
     }
     func saveResult() {
         let sessionName = getSessionName()
-        if results.last?.name ?? "" == sessionName{
+        if results.last?.name ?? "" == sessionName {
             return
         }
         let result = Result()
@@ -81,6 +81,9 @@ struct CheckoutView: View {
         }
         return chipDiff
     }
+    func getSessionDate() -> Date {
+        settings.first?.sessionDate ?? Date.now
+    }
     func getChipValue() -> Float {
         settings.first?.valuePerChip ?? 0.1
     }
@@ -98,8 +101,8 @@ struct CheckoutView: View {
     }
     func getSessionName() -> String {
         let dateFormatter = DateFormatter()
-        let date = Date.now
-        dateFormatter.dateFormat = "YYYY/MM/dd"
+        let date = getSessionDate()
+        dateFormatter.dateFormat = "YYYY/MM/dd HH:mm"
         return "\(dateFormatter.string(from: date))  \(getGameLevel())  MAX\(getGameSize())"
     }
 }

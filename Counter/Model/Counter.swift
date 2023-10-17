@@ -27,7 +27,7 @@ class Counter: Identifiable {
     
     func getSessionName() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY/MM/dd"
+        dateFormatter.dateFormat = "YYYY/MM/dd HH:mm"
         return dateFormatter.string(from: date)
     }
     
