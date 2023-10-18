@@ -17,12 +17,13 @@ struct PlayerView: View {
         HStack {
             Text(currentPlayer.name)
             Spacer()
+            Text("\(currentPlayer.buyIn)")
+                .frame(width: 60)
             Button("Buy In") {
                 currentPlayer.buyIn += getIncrement()
                 try? context.save()
             }
             .buttonStyle(BorderedProminentButtonStyle())
-            Text("\(currentPlayer.buyIn)")
         }
     }
     func getIncrement() -> Int {
