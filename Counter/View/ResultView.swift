@@ -46,12 +46,12 @@ struct ResultView: View {
         }
     }
     
-    func getChipLeader() -> String {
-        results.last?.wins.first?.name ?? ""
-    }
-    
     func getResult() -> Result {
         try! results.filter(#Predicate { $0.name == resultId }).last ?? Result()
+    }
+    
+    func getChipLeader() -> String {
+        getResult().wins.first?.name ?? ""
     }
 }
 

@@ -23,6 +23,7 @@ struct PlayerResultView: View {
                 .font(.system(size:20))
             Spacer()
             Text("(\(currentPlayer.buyin) BuyIn)").font(.system(size: 13))
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
         }
     }
     
