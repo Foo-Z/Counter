@@ -46,19 +46,8 @@ struct ResultView: View {
         }
     }
     func getChipLeader() -> String {
-        var maxProfit = 0
-        var leader: String = ""
-        for player in results.last?.wins ?? [] {
-            if player.profitValue > maxProfit {
-                maxProfit = player.profitValue
-                leader = player.name
-            }
-        }
-        return leader
+        results.last?.wins.first?.name ?? ""
     }
-//    func getSessionName() -> String {
-//        resultId
-//    }
     func getResult() -> Result {
         try! results.filter(#Predicate { $0.name == resultId }).last ?? Result()
     }

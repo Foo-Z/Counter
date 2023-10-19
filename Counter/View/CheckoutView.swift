@@ -61,6 +61,8 @@ struct CheckoutView: View {
                 result.loses.append(playerResult)
             }
         }
+        result.wins.sort {$0.profitValue > $1.profitValue}
+        result.loses.sort {$0.profitValue > $1.profitValue}
         context.insert(result)
     }
 

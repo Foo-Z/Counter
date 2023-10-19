@@ -16,6 +16,10 @@ struct PlayerResultView: View {
     var body: some View {
         HStack {
             Text("\(currentPlayer.name) \(getResult())")
+                .frame(width: 165, alignment: .leading)
+            Spacer()
+            Text(addFish())
+                .font(.system(size:20))
             Spacer()
             Text("(\(currentPlayer.buyin) BuyIn)").font(.system(size: 13))
         }
@@ -25,7 +29,15 @@ struct PlayerResultView: View {
         let diff = currentPlayer.profitValue
         let r = diff < 0 ? "lose" : "win"
         return "\(r) \(currentPlayer.profit)"
-        
+    }
+    
+    func addFish() -> String {
+        let diff = currentPlayer.profitValue
+        return diff < 0 ? "🐟" : ""
+    }
+    func addImage() -> String {
+        let diff = currentPlayer.profitValue
+        return diff < 0 ? "fish" : "figure.fishing"
     }
 }
 
