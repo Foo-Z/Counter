@@ -13,6 +13,7 @@ struct VpipResultView: View {
     @Environment(\.dismiss) private var dismiss
     @Query private var players: [Player]
     let total_hands: Int
+    
     var body: some View {
         Text("VPIP & PFR")
             .font(.title2)

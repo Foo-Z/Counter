@@ -9,12 +9,12 @@ import SwiftUI
 
 struct MainView: View {
     enum Tab {
-      case home, session, vpip, historical
+        case home, session, vpip, historical
     }
     @State private var selectedTab: Tab = .home
-
+    
     var body: some View {
-
+        
         TabView(selection: $selectedTab) {
             CounterView()
                 .tabItem {

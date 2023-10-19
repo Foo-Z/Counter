@@ -20,7 +20,6 @@
 		E3825BEE2AD934EC00891E7A /* PlayerVpipResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3825BED2AD934EC00891E7A /* PlayerVpipResultView.swift */; };
 		E393A95C2AD9F186006762F7 /* HistoricalResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E393A95B2AD9F186006762F7 /* HistoricalResultView.swift */; };
 		E3963A232ACA198C0032D4B1 /* CounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A222ACA198C0032D4B1 /* CounterApp.swift */; };
-		E3963A252ACA198C0032D4B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A242ACA198C0032D4B1 /* ContentView.swift */; };
 		E3963A272ACA198D0032D4B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3963A262ACA198D0032D4B1 /* Assets.xcassets */; };
 		E3963A2B2ACA198D0032D4B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3963A2A2ACA198D0032D4B1 /* Preview Assets.xcassets */; };
 		E3963A352ACA198D0032D4B1 /* CounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A342ACA198D0032D4B1 /* CounterTests.swift */; };
@@ -69,7 +68,6 @@
 		E393A95B2AD9F186006762F7 /* HistoricalResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalResultView.swift; sourceTree = "<group>"; };
 		E3963A1F2ACA198C0032D4B1 /* Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3963A222ACA198C0032D4B1 /* CounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterApp.swift; sourceTree = "<group>"; };
-		E3963A242ACA198C0032D4B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E3963A262ACA198D0032D4B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3963A282ACA198D0032D4B1 /* Counter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Counter.entitlements; sourceTree = "<group>"; };
 		E3963A2A2ACA198D0032D4B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 				E3963A4E2ACA24430032D4B1 /* ViewModel */,
 				E3963A4D2ACA243B0032D4B1 /* Model */,
 				E3963A222ACA198C0032D4B1 /* CounterApp.swift */,
-				E3963A242ACA198C0032D4B1 /* ContentView.swift */,
 				E3963A262ACA198D0032D4B1 /* Assets.xcassets */,
 				E3963A282ACA198D0032D4B1 /* Counter.entitlements */,
 				E3963A292ACA198D0032D4B1 /* Preview Content */,
@@ -360,7 +357,6 @@
 				E37265522AD2161200E8997D /* MainView.swift in Sources */,
 				E3963A5D2ACA8DA70032D4B1 /* StartView.swift in Sources */,
 				E3963A552ACA26DB0032D4B1 /* Counter.swift in Sources */,
-				E3963A252ACA198C0032D4B1 /* ContentView.swift in Sources */,
 				E3963A612ACD36190032D4B1 /* AddPlayerView.swift in Sources */,
 				E37265502AD208A100E8997D /* HomeView.swift in Sources */,
 				E37265472ACD4F0F00E8997D /* ResultView.swift in Sources */,

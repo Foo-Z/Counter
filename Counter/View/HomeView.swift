@@ -13,6 +13,7 @@ struct HomeView: View {
     @Query private var players: [Player]
     @State private var showingAlert = false
     @State private var navLinkActive = false
+    
     var body: some View {
         NavigationStack {
             Text("1250 Poker Room")
@@ -29,7 +30,7 @@ struct HomeView: View {
                 .onAppear() {
                     clearLastSession()
                 }
-
+                
                 NavigationLink(destination: CounterView()) {
                     Text("Current session")
                 }
@@ -53,6 +54,7 @@ struct HomeView: View {
             Spacer()
         }
     }
+    
     func clearLastSession() {
         for player in players {
             context.delete(player)

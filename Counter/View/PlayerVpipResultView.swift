@@ -10,6 +10,7 @@ import SwiftUI
 struct PlayerVpipResultView: View {
     var currentPlayer: Player
     var total_hands: Int
+    
     var body: some View {
         HStack (alignment: .center) {
             Text("\(currentPlayer.name)")
@@ -21,6 +22,7 @@ struct PlayerVpipResultView: View {
     func getVpip() -> String {
         return String(format: "%.1f %", Float(currentPlayer.vpip) / Float(total_hands) * 100)
     }
+    
     func getPfr() -> String {
         if total_hands == 0 {
             return "0.00 %"

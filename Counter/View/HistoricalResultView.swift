@@ -11,6 +11,7 @@ import SwiftData
 struct HistoricalResultView: View {
     @Environment(\.modelContext) private var context
     @Query private var results: [Result]
+    
     var body: some View {
         NavigationStack {
             Text("Historical Results")
@@ -33,6 +34,7 @@ struct HistoricalResultView: View {
         }
         
     }
+    
     func removeRecord(_ result: Result) {
         context.delete(result)
     }

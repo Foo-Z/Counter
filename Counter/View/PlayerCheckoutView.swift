@@ -30,6 +30,7 @@ struct PlayerCheckoutView: View {
             self.hideKeyboard()
         }
     }
+    
     func updateCheckout() {
         currentPlayer.cashOut = cashout ?? 0
         try? context.save()

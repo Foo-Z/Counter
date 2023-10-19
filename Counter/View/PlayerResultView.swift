@@ -13,6 +13,7 @@ struct PlayerResultView: View {
     @Query private var settings: [Setting]
     var currentPlayer: Result.Player
     @State private var result: Float = 0.0
+    
     var body: some View {
         HStack {
             Text("\(currentPlayer.name) \(getResult())")
@@ -35,6 +36,7 @@ struct PlayerResultView: View {
         let diff = currentPlayer.profitValue
         return diff < 0 ? "🐟" : ""
     }
+    
     func addImage() -> String {
         let diff = currentPlayer.profitValue
         return diff < 0 ? "fish" : "figure.fishing"

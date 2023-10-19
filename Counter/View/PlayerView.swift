@@ -26,6 +26,7 @@ struct PlayerView: View {
             .buttonStyle(BorderedProminentButtonStyle())
         }
     }
+    
     func getIncrement() -> Int {
         settings.first?.increment ?? 500
     }

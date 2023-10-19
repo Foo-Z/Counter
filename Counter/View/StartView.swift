@@ -29,153 +29,137 @@ struct StartView: View {
     @Query private var players: [Player]
     @Environment(\.dismiss) private var dismiss
     @State private var showingAlert = false
-
+    
     var body: some View {
         Text("Session Date: \(getSessionName())")
             .font(.title2)
             .padding(10)
-            VStack(alignment: .leading, spacing: 5) {
-                List {
-                    VStack {
-                        HStack {
-                            Text("Player 1: ")
-                            Spacer()
-                            TextField("", text: $player1)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Player 2: ")
-                            Spacer()
-                            TextField("", text: $player2)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                            
-                        }
-                        HStack {
-                            Text("Player 3: ")
-                            Spacer()
-                            TextField("", text: $player3)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Player 4: ")
-                            Spacer()
-                            TextField("", text: $player4)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Player 5: ")
-                            Spacer()
-                            TextField("", text: $player5)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Player 6: ")
-                            Spacer()
-                            TextField("", text: $player6)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Player 7: ")
-                            Spacer()
-                            TextField("", text: $player7)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Player 8: ")
-                            Spacer()
-                            TextField("", text: $player8)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Player 9: ")
-                            Spacer()
-                            TextField("", text: $player9)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Player 10: ")
-                            Spacer()
-                            TextField("", text: $player10)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Buy In chips: ")
-                            Spacer()
-                            TextField("", value: $defaultBuyIn, format: .number)
-                                .keyboardType(.numberPad)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Chip value: ")
-                            Spacer()
-                            TextField("", value: $defaultValuePerChip, format: .number)
-                                .keyboardType(.numberPad)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
-                        HStack {
-                            Text("Game Level: ")
-                            Spacer()
-                            TextField("", text: $defaultGameLevel)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 150)
-                        }
+        VStack(alignment: .leading, spacing: 5) {
+            List {
+                VStack {
+                    HStack {
+                        Text("Player 1: ")
                         Spacer()
+                        TextField("", text: $player1)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
                     }
+                    HStack {
+                        Text("Player 2: ")
+                        Spacer()
+                        TextField("", text: $player2)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                        
+                    }
+                    HStack {
+                        Text("Player 3: ")
+                        Spacer()
+                        TextField("", text: $player3)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Player 4: ")
+                        Spacer()
+                        TextField("", text: $player4)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Player 5: ")
+                        Spacer()
+                        TextField("", text: $player5)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Player 6: ")
+                        Spacer()
+                        TextField("", text: $player6)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Player 7: ")
+                        Spacer()
+                        TextField("", text: $player7)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Player 8: ")
+                        Spacer()
+                        TextField("", text: $player8)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Player 9: ")
+                        Spacer()
+                        TextField("", text: $player9)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Player 10: ")
+                        Spacer()
+                        TextField("", text: $player10)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Buy In chips: ")
+                        Spacer()
+                        TextField("", value: $defaultBuyIn, format: .number)
+                            .keyboardType(.numberPad)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Chip value: ")
+                        Spacer()
+                        TextField("", value: $defaultValuePerChip, format: .number)
+                            .keyboardType(.numberPad)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    HStack {
+                        Text("Game Level: ")
+                        Spacer()
+                        TextField("", text: $defaultGameLevel)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 150)
+                    }
+                    Spacer()
                 }
             }
-            .onTapGesture {
-                self.hideKeyboard()
-            }
-            Spacer()
-                
-            Button("OK") {
-                showingAlert = true
-               // CounterView().onAppear {
-//                    
-//                    if settings.isEmpty {
-//                        context.insert(Setting(increment: defaultBuyIn, valuePerChip: defaultValuePerChip, gameLevel: defaultGameLevel))
-//                    } else {
-//                        settings.first?.increment = defaultBuyIn
-//                        settings.first?.valuePerChip = defaultValuePerChip
-//                        settings.first?.gameLevel = defaultGameLevel
-//                        try? context.save()
-//                    }
-//                defaultBuyIn = settings.first?.increment ?? 500
-//                addPlayers(defaultBuyIn)
-//                dismiss()
-                    
-            }
-            .font(.title2)
-            .buttonStyle(BorderedProminentButtonStyle())
-            .alert(isPresented: $showingAlert) {
-                Alert(
-                    title: Text("This will remove all existing players."),
-                    message: Text("Are you sure?"),
-                    primaryButton: .destructive(Text("OK")) {
-                        clearLastSession()
-                        updateSettings()
-                        addPlayers(defaultBuyIn)
-                        dismiss()
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
-          //  }
-//        }
-//        .navigationBarBackButtonHidden()
+        }
+        .onTapGesture {
+            self.hideKeyboard()
+        }
+        Spacer()
+        
+        Button("OK") {
+            showingAlert = true
+        }
+        .font(.title2)
+        .buttonStyle(BorderedProminentButtonStyle())
+        .alert(isPresented: $showingAlert) {
+            Alert(
+                title: Text("This will remove all existing players."),
+                message: Text("Are you sure?"),
+                primaryButton: .destructive(Text("OK")) {
+                    clearLastSession()
+                    updateSettings()
+                    addPlayers(defaultBuyIn)
+                    dismiss()
+                },
+                secondaryButton: .cancel()
+            )
+        }
     }
+    
     func addPlayers(_: Int) {
         if !player1.isEmpty {
             context.insert(Player(name: player1, buyIn: defaultBuyIn))
@@ -218,17 +202,20 @@ struct StartView: View {
             player10 = ""
         }
     }
+    
     func getSessionName() -> String {
         let dateFormatter = DateFormatter()
         let date = Date.now
         dateFormatter.dateFormat = "YYYY/MM/dd HH:mm"
         return dateFormatter.string(from: date)
     }
+    
     func clearLastSession() {
         for player in players {
             context.delete(player)
         }
     }
+    
     func updateSettings() {
         let date = Date.now
         if settings.isEmpty {
@@ -243,6 +230,7 @@ struct StartView: View {
         defaultBuyIn = settings.first?.increment ?? 500
     }
 }
+
 struct RowView: View {
     var index: Int
     @State private var playerName: String
@@ -256,6 +244,7 @@ struct RowView: View {
         .padding(10)
     }
 }
+
 extension View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

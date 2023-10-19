@@ -41,12 +41,12 @@ class CounterViewModel: ObservableObject {
     var testPlayers = [
         Player(name: "Foo"),
         Player(name: "Lw"),
-          Player(name: "Zhy"),
-          Player(name: "Yhw"),
-          Player(name: "ZCL"),
-          Player(name: "Yunong"),
-          Player(name: "J"),
-          Player(name: "Rick"),        
+        Player(name: "Zhy"),
+        Player(name: "Yhw"),
+        Player(name: "ZCL"),
+        Player(name: "Yunong"),
+        Player(name: "J"),
+        Player(name: "Rick"),        
         Player(name: "Dingding"),
         Player(name: "Yuan")
     ]

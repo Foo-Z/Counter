@@ -46,14 +46,14 @@ struct AddPlayerView: View {
                         }
                         .buttonStyle(BorderedProminentButtonStyle())
                     }
-                    //.padding(80)
                 }
                 .padding(10)
             }
         }
-
+        
         
     }
+    
     func addNewPlayer() {
         if !name.isEmpty {
             context.insert(Player(name: name, buyIn: buyIn))

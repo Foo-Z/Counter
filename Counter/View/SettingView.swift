@@ -17,7 +17,6 @@ struct SettingView: View {
     @Query private var settings: [Setting]
     @Query private var players: [Player]
     @State private var showingAlert = false
-
     
     var body: some View {
         Text("Settings")

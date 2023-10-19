@@ -12,10 +12,10 @@ import EffectsLibrary
 struct ResultView: View {
     //@Query(filter: #Predicate<Player> { $0.buyIn >= 1000 }, sort: [SortDescriptor(\Player.buyIn, order: .reverse)]) var winPlayers: [Player]
     //filter: #Predicate { $0.profit >= 0},
-//    @Query(filter: #Predicate<Player> { $0.profit < 0}, sort: [SortDescriptor(\Player.profit, order: .reverse)]) private var losePlayers: [Player]
-//    init(sort: SortDescriptor<Player>) {
-//        _wins = Query(filter: #Predicate({ $0.profit >= 0 }))
-//    }
+    //    @Query(filter: #Predicate<Player> { $0.profit < 0}, sort: [SortDescriptor(\Player.profit, order: .reverse)]) private var losePlayers: [Player]
+    //    init(sort: SortDescriptor<Player>) {
+    //        _wins = Query(filter: #Predicate({ $0.profit >= 0 }))
+    //    }
     var resultId: String
     @Environment(\.modelContext) private var context
     @Query() private var results: [Result]
@@ -45,9 +45,11 @@ struct ResultView: View {
             }
         }
     }
+    
     func getChipLeader() -> String {
         results.last?.wins.first?.name ?? ""
     }
+    
     func getResult() -> Result {
         try! results.filter(#Predicate { $0.name == resultId }).last ?? Result()
     }

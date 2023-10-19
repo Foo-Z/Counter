@@ -13,6 +13,7 @@ struct CheckoutView: View {
     @Query private var players: [Player]
     @Query private var settings: [Setting]
     @Query private var results: [Result]
+    
     var body: some View {
         NavigationStack {
             Text("\(getSessionName())")
@@ -41,6 +42,7 @@ struct CheckoutView: View {
             self.hideKeyboard()
         }
     }
+    
     func saveResult() {
         let sessionName = getSessionName()
         if results.last?.name ?? "" == sessionName {
@@ -65,7 +67,7 @@ struct CheckoutView: View {
         result.loses.sort {$0.profitValue > $1.profitValue}
         context.insert(result)
     }
-
+    
     func chipMessage() -> String {
         let chipDiff = getChipDiff()
         if chipDiff == 0 {
@@ -76,6 +78,7 @@ struct CheckoutView: View {
             return "We are short for \(-chipDiff) chips"
         }
     }
+    
     func getChipDiff() -> Int {
         var chipDiff: Int = 0
         for player in players {
@@ -83,24 +86,31 @@ struct CheckoutView: View {
         }
         return chipDiff
     }
+    
     func getSessionDate() -> Date {
         settings.first?.sessionDate ?? Date.now
     }
+    
     func getChipValue() -> Float {
         settings.first?.valuePerChip ?? 0.1
     }
+    
     func getGameLevel() -> String {
         settings.first?.gameLevel ?? "0.5/0.5"
     }
+    
     func getBuyinValue(buyin: Int) -> String {
         String(format: "$%.2f", Float(buyin) * getChipValue())
     }
+    
     func getProfitValue(profit: Int) -> String {
         String(format: "$%.2f", Float(profit) * getChipValue())
     }
+    
     func getGameSize() -> Int {
         players.count
     }
+    
     func getSessionName() -> String {
         let dateFormatter = DateFormatter()
         let date = getSessionDate()

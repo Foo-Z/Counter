@@ -48,6 +48,7 @@ struct VpipView: View {
             .padding(10)
         }
     }
+    
     func getTotalHand() -> Int {
         var hands = 0
         for player in players {

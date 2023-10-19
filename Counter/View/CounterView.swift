@@ -53,7 +53,6 @@ struct CounterView: View {
                     })
                 }
             }
-            //.navigationBarBackButtonHidden()
             HStack {
                 Spacer()
                 VStack(spacing: 10) {
@@ -81,12 +80,15 @@ struct CounterView: View {
         }
         .navigationBarBackButtonHidden()
     }
+    
     func removePlayer(_ player: Player) {
         context.delete(player)
     }
+    
     func getIncrement() -> Int {
         settings.first?.increment ?? 500
     }
+    
     func getTotalChips() -> Int {
         var totalChips: Int = 0
         for player in players {

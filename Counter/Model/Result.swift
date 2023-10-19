@@ -17,6 +17,7 @@ class Result {
         var profit: String
         var profitValue: Int
     }
+    
     @Attribute(.unique) var name: String
     var wins: [Result.Player]
     var loses: [Result.Player]
@@ -28,5 +29,5 @@ class Result {
         wins = []
         loses = []
     }
-
+    
 }
