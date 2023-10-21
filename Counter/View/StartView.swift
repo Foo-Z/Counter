@@ -29,6 +29,8 @@ struct StartView: View {
     @Query private var players: [Player]
     @Environment(\.dismiss) private var dismiss
     @State private var showingAlert = false
+    @State var showingSelector: Bool =  false
+    @State private var selectedPlayers: Set<String> = []
     
     var body: some View {
         Text("Session Date: \(getSessionName())")
@@ -37,10 +39,33 @@ struct StartView: View {
         VStack(alignment: .leading, spacing: 5) {
             List {
                 VStack {
+                    Button("Select Players") {
+                        showingSelector = true
+                    }
+                    .sheet(isPresented: $showingSelector, content: {
+                        SelectPlayerView(selectedPlayers: $selectedPlayers)
+                    })
+                    .buttonStyle(BorderedProminentButtonStyle())
+                    .onAppear() {
+//                        var i = 1
+//                        for player in selectedPlayers {
+//                            if i == 1 {
+//                                player1 = player
+//                            } else if i == 2 {
+//                                player2 = player
+//                            } else if i == 3 {
+//                                player3 = player
+//                            }
+//                            i += 1
+//                        }
+                        player1 = selectedPlayers.first ?? ""
+//                        player2 = $selectedPlayers.last ?? ""
+                        print(selectedPlayers)
+                    }
                     HStack {
                         Text("Player 1: ")
                         Spacer()
-                        TextField("", text: $player1)
+                        TextField("Feiou", text: $player1)
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 150)
                     }

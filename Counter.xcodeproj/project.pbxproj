@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E309DFEE2AE342AA0095F8DB /* SelectPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309DFED2AE342AA0095F8DB /* SelectPlayerView.swift */; };
 		E37265452ACD4A0C00E8997D /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265442ACD4A0C00E8997D /* CheckoutView.swift */; };
 		E37265472ACD4F0F00E8997D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265462ACD4F0F00E8997D /* ResultView.swift */; };
 		E37265492ACD4F5600E8997D /* PlayerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37265482ACD4F5600E8997D /* PlayerResultView.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E309DFED2AE342AA0095F8DB /* SelectPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerView.swift; sourceTree = "<group>"; };
 		E37265442ACD4A0C00E8997D /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		E37265462ACD4F0F00E8997D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		E37265482ACD4F5600E8997D /* PlayerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerResultView.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				E37265572AD2374F00E8997D /* VpipView.swift */,
 				E3825BEB2AD9345B00891E7A /* VpipResultView.swift */,
 				E393A95B2AD9F186006762F7 /* HistoricalResultView.swift */,
+				E309DFED2AE342AA0095F8DB /* SelectPlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				E3963A632ACD43390032D4B1 /* PlayerCheckoutView.swift in Sources */,
 				E3963A532ACA26060032D4B1 /* CounterViewModel.swift in Sources */,
 				E37265452ACD4A0C00E8997D /* CheckoutView.swift in Sources */,
+				E309DFEE2AE342AA0095F8DB /* SelectPlayerView.swift in Sources */,
 				E3963A592ACA32980032D4B1 /* CounterView.swift in Sources */,
 				E37265562AD2364D00E8997D /* PlayerVpipView.swift in Sources */,
 				E3963A572ACA328C0032D4B1 /* PlayerView.swift in Sources */,
