@@ -13,6 +13,7 @@ struct CheckoutView: View {
     @Query private var players: [Player]
     @Query private var settings: [Setting]
     @Query private var results: [Result]
+    @Query private var playerRecords: [PlayerRecord]
     
     var body: some View {
         NavigationStack {
@@ -57,14 +58,24 @@ struct CheckoutView: View {
                 profit: getProfitValue(profit: abs(player.cashOut - player.buyIn)),
                 profitValue: player.cashOut - player.buyIn
             )
-            if player.cashOut >= player.buyIn {
+            let playerName = player.name 
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == playerName }).last ?? PlayerRecord(name: "impossible")
+            
+            if playerResult.profitValue >= 0 {
                 result.wins.append(playerResult)
+                playerRecord.totalGameWinned += 1
             } else {
                 result.loses.append(playerResult)
+                playerRecord.totalGameLost += 1
             }
+            playerRecord.totalProfit += Float(playerResult.profitValue) * getChipValue()
+            playerRecord.gamePlayed.append(sessionName)
         }
         result.wins.sort {$0.profitValue > $1.profitValue}
         result.loses.sort {$0.profitValue > $1.profitValue}
+        let playerName = result.wins.first?.name ?? "Feiou"
+        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == playerName }).last ?? PlayerRecord(name: "impossible")
+        chipLeaderRecord.chipLeaderCount += 1
         context.insert(result)
     }
     

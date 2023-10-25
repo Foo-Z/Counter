@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     enum Tab {
-        case home, session, vpip, historical
+        case home, session, vpip, historical, player
     }
     @State private var selectedTab: Tab = .home
     
@@ -22,11 +22,11 @@ struct MainView: View {
                 }
                 .tag(Tab.home)
             
-            VpipView()
+            PlayerRecordView()
                 .tabItem {
                     Label("", systemImage: "chart.bar.xaxis")
                 }
-                .tag(Tab.vpip)
+                .tag(Tab.player)
             
             HistoricalResultView()
                 .tabItem {

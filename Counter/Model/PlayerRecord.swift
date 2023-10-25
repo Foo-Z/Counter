@@ -14,7 +14,6 @@ class PlayerRecord: Identifiable, Equatable {
     @Attribute(.unique)
     var name: String
     var totalProfit: Float
-    var totalGamePlayed: Int
     var totalGameWinned: Int
     var totalGameLost: Int
     var chipLeaderCount: Int
@@ -22,7 +21,6 @@ class PlayerRecord: Identifiable, Equatable {
     init(name: String) {
         self.name = name
         self.totalProfit = 0.0
-        self.totalGamePlayed = 0
         self.totalGameWinned = 0
         self.totalGameLost = 0
         self.chipLeaderCount = 0

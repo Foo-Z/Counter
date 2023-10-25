@@ -37,6 +37,8 @@
 		E3963A5F2ACB8EEC0032D4B1 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A5E2ACB8EEC0032D4B1 /* Setting.swift */; };
 		E3963A612ACD36190032D4B1 /* AddPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A602ACD36190032D4B1 /* AddPlayerView.swift */; };
 		E3963A632ACD43390032D4B1 /* PlayerCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A622ACD43380032D4B1 /* PlayerCheckoutView.swift */; };
+		E3EED4A32AE90DC3006DF854 /* PlayerRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EED4A22AE90DC3006DF854 /* PlayerRecordView.swift */; };
+		E3EED4A52AE90E8E006DF854 /* PlayerRecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EED4A42AE90E8E006DF854 /* PlayerRecordRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		E3963A5E2ACB8EEC0032D4B1 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		E3963A602ACD36190032D4B1 /* AddPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerView.swift; sourceTree = "<group>"; };
 		E3963A622ACD43380032D4B1 /* PlayerCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCheckoutView.swift; sourceTree = "<group>"; };
+		E3EED4A22AE90DC3006DF854 /* PlayerRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRecordView.swift; sourceTree = "<group>"; };
+		E3EED4A42AE90E8E006DF854 /* PlayerRecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRecordRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,7 @@
 				E37265462ACD4F0F00E8997D /* ResultView.swift */,
 				E37265482ACD4F5600E8997D /* PlayerResultView.swift */,
 				E3825BED2AD934EC00891E7A /* PlayerVpipResultView.swift */,
+				E3EED4A42AE90E8E006DF854 /* PlayerRecordRowView.swift */,
 				E372654F2AD208A100E8997D /* HomeView.swift */,
 				E37265512AD2161200E8997D /* MainView.swift */,
 				E37265552AD2364D00E8997D /* PlayerVpipView.swift */,
@@ -218,6 +223,7 @@
 				E3825BEB2AD9345B00891E7A /* VpipResultView.swift */,
 				E393A95B2AD9F186006762F7 /* HistoricalResultView.swift */,
 				E309DFED2AE342AA0095F8DB /* SelectPlayerView.swift */,
+				E3EED4A22AE90DC3006DF854 /* PlayerRecordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -380,8 +386,10 @@
 				E37265492ACD4F5600E8997D /* PlayerResultView.swift in Sources */,
 				E3963A5B2ACA79B90032D4B1 /* SettingView.swift in Sources */,
 				E3963A512ACA24670032D4B1 /* Player.swift in Sources */,
+				E3EED4A32AE90DC3006DF854 /* PlayerRecordView.swift in Sources */,
 				E3963A232ACA198C0032D4B1 /* CounterApp.swift in Sources */,
 				E3825BF22AE8EBBD00891E7A /* PlayerRecord.swift in Sources */,
+				E3EED4A52AE90E8E006DF854 /* PlayerRecordRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
