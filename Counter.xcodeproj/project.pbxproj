@@ -39,6 +39,7 @@
 		E3963A632ACD43390032D4B1 /* PlayerCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A622ACD43380032D4B1 /* PlayerCheckoutView.swift */; };
 		E3EED4A32AE90DC3006DF854 /* PlayerRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EED4A22AE90DC3006DF854 /* PlayerRecordView.swift */; };
 		E3EED4A52AE90E8E006DF854 /* PlayerRecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EED4A42AE90E8E006DF854 /* PlayerRecordRowView.swift */; };
+		E3FAE4702AE9C2B900A08613 /* AddHistoricalResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FAE46F2AE9C2B900A08613 /* AddHistoricalResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		E3963A622ACD43380032D4B1 /* PlayerCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCheckoutView.swift; sourceTree = "<group>"; };
 		E3EED4A22AE90DC3006DF854 /* PlayerRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRecordView.swift; sourceTree = "<group>"; };
 		E3EED4A42AE90E8E006DF854 /* PlayerRecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRecordRowView.swift; sourceTree = "<group>"; };
+		E3FAE46F2AE9C2B900A08613 /* AddHistoricalResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoricalResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				E3963A562ACA328C0032D4B1 /* PlayerView.swift */,
+				E3FAE46F2AE9C2B900A08613 /* AddHistoricalResultView.swift */,
 				E3963A622ACD43380032D4B1 /* PlayerCheckoutView.swift */,
 				E3963A582ACA32980032D4B1 /* CounterView.swift */,
 				E3963A5A2ACA79B90032D4B1 /* SettingView.swift */,
@@ -372,6 +375,7 @@
 				E3963A612ACD36190032D4B1 /* AddPlayerView.swift in Sources */,
 				E37265502AD208A100E8997D /* HomeView.swift in Sources */,
 				E37265472ACD4F0F00E8997D /* ResultView.swift in Sources */,
+				E3FAE4702AE9C2B900A08613 /* AddHistoricalResultView.swift in Sources */,
 				E372654B2ACDE01B00E8997D /* Result.swift in Sources */,
 				E3963A632ACD43390032D4B1 /* PlayerCheckoutView.swift in Sources */,
 				E3963A532ACA26060032D4B1 /* CounterViewModel.swift in Sources */,
