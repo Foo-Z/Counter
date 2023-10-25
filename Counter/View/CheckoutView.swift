@@ -54,27 +54,25 @@ struct CheckoutView: View {
         for player in players {
             let playerResult = Result.Player(
                 name: player.name,
-                buyin: getBuyinValue(buyin: player.buyIn),
-                profit: getProfitValue(profit: abs(player.cashOut - player.buyIn)),
-                profitValue: player.cashOut - player.buyIn
+                buyinDollarAmount: (Float)(player.buyIn) * getChipValue(),
+                profitDollarAmount: (Float)(player.cashOut - player.buyIn) * getChipValue()
             )
-            let playerName = player.name 
-            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == playerName }).last ?? PlayerRecord(name: "impossible")
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == player.name }).last ?? PlayerRecord(name: "impossible")
             
-            if playerResult.profitValue >= 0 {
+            if playerResult.profitDollarAmount >= 0 {
                 result.wins.append(playerResult)
                 playerRecord.totalGameWinned += 1
             } else {
                 result.loses.append(playerResult)
                 playerRecord.totalGameLost += 1
             }
-            playerRecord.totalProfit += Float(playerResult.profitValue) * getChipValue()
+            playerRecord.totalProfit += playerResult.profitDollarAmount
             playerRecord.gamePlayed.append(sessionName)
         }
-        result.wins.sort {$0.profitValue > $1.profitValue}
-        result.loses.sort {$0.profitValue > $1.profitValue}
-        let playerName = result.wins.first?.name ?? "Feiou"
-        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == playerName }).last ?? PlayerRecord(name: "impossible")
+        result.wins.sort {$0.profitDollarAmount > $1.profitDollarAmount}
+        result.loses.sort {$0.profitDollarAmount > $1.profitDollarAmount}
+        let chipLeader = result.wins.first?.name ?? "Feiou"
+        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: "impossible")
         chipLeaderRecord.chipLeaderCount += 1
         context.insert(result)
     }
@@ -108,14 +106,6 @@ struct CheckoutView: View {
     
     func getGameLevel() -> String {
         settings.first?.gameLevel ?? "0.5/0.5"
-    }
-    
-    func getBuyinValue(buyin: Int) -> String {
-        String(format: "$%.2f", Float(buyin) * getChipValue())
-    }
-    
-    func getProfitValue(profit: Int) -> String {
-        String(format: "$%.2f", Float(profit) * getChipValue())
     }
     
     func getGameSize() -> Int {

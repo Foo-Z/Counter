@@ -11,6 +11,7 @@ import SwiftData
 struct HistoricalResultView: View {
     @Environment(\.modelContext) private var context
     @Query private var results: [Result]
+    @Query private var playerRecords: [PlayerRecord]
     
     var body: some View {
         NavigationStack {
@@ -32,11 +33,26 @@ struct HistoricalResultView: View {
                 }
             }
         }
-        
     }
     
     func removeRecord(_ result: Result) {
+        let wins = result.wins
+        let loses = result.loses
+        for win in wins {
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == win.name }).last ?? PlayerRecord(name: "impossible")
+            playerRecord.totalGameWinned -= 1
+            playerRecord.totalProfit -= win.profitDollarAmount
+        }
+        for lose in loses {
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == lose.name }).last ?? PlayerRecord(name: "impossible")
+            playerRecord.totalGameLost -= 1
+            playerRecord.totalProfit -= lose.profitDollarAmount
+        }
+        let chipLeader = result.wins.first?.name ?? "Feiou"
+        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: "impossible")
+        chipLeaderRecord.chipLeaderCount -= 1
         context.delete(result)
+        try? context.save()
     }
 }
 

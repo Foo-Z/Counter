@@ -13,9 +13,8 @@ class Result {
     struct Player: Identifiable, Codable, Hashable {
         var id = UUID()
         var name: String
-        var buyin: String
-        var profit: String
-        var profitValue: Int
+        var buyinDollarAmount: Float
+        var profitDollarAmount: Float
     }
     
     @Attribute(.unique) var name: String

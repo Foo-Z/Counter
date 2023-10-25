@@ -22,28 +22,21 @@ struct PlayerResultView: View {
             Text(addFish())
                 .font(.system(size:20))
             Spacer()
-            Text("(\(currentPlayer.buyin) BuyIn)").font(.system(size: 13))
+            Text("(\(String(format: "$%.2f", Float(currentPlayer.buyinDollarAmount))) BuyIn)").font(.system(size: 13))
                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
         }
     }
     
     func getResult() -> String {
-        let diff = currentPlayer.profitValue
-        let r = diff < 0 ? "lose" : "win"
-        return "\(r) \(currentPlayer.profit)"
+        let r = currentPlayer.profitDollarAmount < 0 ? "lose" : "win"
+        return "\(r) \(String(format: "$%.2f", Float(abs(currentPlayer.profitDollarAmount))))"
     }
     
     func addFish() -> String {
-        let diff = currentPlayer.profitValue
-        return diff < 0 ? "🐟" : ""
-    }
-    
-    func addImage() -> String {
-        let diff = currentPlayer.profitValue
-        return diff < 0 ? "fish" : "figure.fishing"
+        return currentPlayer.profitDollarAmount < 0 ? "🐟" : ""
     }
 }
 
 #Preview {
-    PlayerResultView(currentPlayer: Result.Player(name: "test", buyin: "10", profit: "20", profitValue: 20))
+    PlayerResultView(currentPlayer: Result.Player(name: "Feiou", buyinDollarAmount: 50.00, profitDollarAmount: 50.00))
 }
