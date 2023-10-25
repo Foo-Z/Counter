@@ -6,29 +6,36 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SelectPlayerView: View {
+    @Environment(\.modelContext) private var context
     @Binding var selectedPlayers: Set<String>
-    let items: [String] = ["Feiou", "Lw", "Rick", "涵羽", "浩文","Colin","J","超伦","Yunong","Weiran","Mika","王皓","Lei","AC","昊天","少桐"]
+    @Query private var playerRecords: [PlayerRecord]
     
     var body: some View {
         List {
-            ForEach(items, id: \.self) { item in
+            ForEach(playerRecords) { item in
                 Button(action: {
-                    if self.selectedPlayers.contains(item) {
-                        self.selectedPlayers.remove(item)
+                    if self.selectedPlayers.contains(item.name) {
+                        self.selectedPlayers.remove(item.name)
                     } else {
-                        self.selectedPlayers.insert(item)
+                        self.selectedPlayers.insert(item.name)
                     }
                 }) {
                     EmptyView()
                 }
-                .listRowBackground(self.selectedPlayers.contains(item) ? Color.blue : Color.clear)
+                .listRowBackground(self.selectedPlayers.contains(item.name) ? Color.blue : Color.clear)
                 .overlay(MultipleSelectionRow(
-                    item: item,
-                    isSelected: self.selectedPlayers.contains(item)
+                    item: item.name,
+                    isSelected: self.selectedPlayers.contains(item.name)
                 ))
             }
+            .onDelete(perform: { indexSet in
+                for index in indexSet {
+                    context.delete(playerRecords[index])
+                }
+            })
         }
     }
 }
@@ -42,10 +49,6 @@ struct MultipleSelectionRow: View {
             Text(item)
                 .foregroundColor(.white)
             Spacer()
-//            if isSelected {
-//                Image(systemName: "checkmark.circle")
-//                    .foregroundColor(.blue)
-//            }
         }
     }
 }

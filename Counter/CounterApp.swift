@@ -14,7 +14,7 @@ struct CounterApp: App {
     
     init() {
         do {
-            modelContainer = try ModelContainer(for: Player.self, Setting.self, Result.self)
+            modelContainer = try ModelContainer(for: Player.self, Setting.self, Result.self, PlayerRecord.self)
         } catch {
             fatalError("Could not initialize ModelContainer")
         }

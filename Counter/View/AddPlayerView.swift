@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddPlayerView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     @State private var name = ""
     @State private var buyIn: Int = 500
+    @Query private var playerRecords: [PlayerRecord]
     var body: some View {
         Text("Add New Player")
             .font(.title2)
@@ -57,6 +59,7 @@ struct AddPlayerView: View {
     func addNewPlayer() {
         if !name.isEmpty {
             context.insert(Player(name: name, buyIn: buyIn))
+            context.insert(PlayerRecord(name: name))
         }
         name = ""
     }
