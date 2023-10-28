@@ -30,10 +30,10 @@ struct StartView: View {
                     Button("Select Players") {
                         showingSelector = true
                     }.padding(10)
-                    .sheet(isPresented: $showingSelector, content: {
-                        SelectPlayerView(selectedPlayers: $selectedPlayers)
-                    })
-                    .buttonStyle(BorderedProminentButtonStyle())
+                        .sheet(isPresented: $showingSelector, content: {
+                            SelectPlayerView(selectedPlayers: $selectedPlayers)
+                        })
+                        .buttonStyle(BorderedProminentButtonStyle())
                     ForEach(Array(selectedPlayers), id: \.self) { player in
                         if let index = Array(selectedPlayers).firstIndex(of: player) {
                             RowView(index: index, playerName: player)
@@ -135,6 +135,7 @@ struct RowView: View {
             TextField("", text: $playerName)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 150)
+                .disabled(true)
         }
     }
 }

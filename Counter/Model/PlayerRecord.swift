@@ -11,8 +11,7 @@ import SwiftData
 @Model
 class PlayerRecord: Identifiable, Equatable {
     var playerId: String = UUID().uuidString
-    @Attribute(.unique)
-    var name: String
+    @Attribute(.unique) var name: String
     var totalProfit: Float
     var totalGameWinned: Int
     var totalGameLost: Int

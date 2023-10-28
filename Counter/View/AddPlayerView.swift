@@ -18,7 +18,6 @@ struct AddPlayerView: View {
         Text("Add New Player")
             .font(.title2)
             .padding(10)
-        Spacer()
         VStack(alignment: .leading, spacing: 5) {
             List {
                 VStack {
@@ -27,7 +26,7 @@ struct AddPlayerView: View {
                         Spacer()
                         TextField("", text: $name)
                             .textFieldStyle(.roundedBorder)
-                            .frame(width: 100)
+                            .frame(width: 125)
                     }
                     HStack {
                         Text("Buy In chips: ")
@@ -35,7 +34,7 @@ struct AddPlayerView: View {
                         TextField("", value: $buyIn, format: .number)
                             .keyboardType(.numberPad)
                             .textFieldStyle(.roundedBorder)
-                            .frame(width: 100)
+                            .frame(width: 125)
                     }
                     HStack (alignment:.center) {
                         Button("Cancel") {
@@ -52,8 +51,6 @@ struct AddPlayerView: View {
                 .padding(10)
             }
         }
-        
-        
     }
     
     func addNewPlayer() {

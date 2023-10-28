@@ -12,6 +12,7 @@ struct HistoricalResultView: View {
     @Environment(\.modelContext) private var context
     @Query private var results: [Result]
     @Query private var playerRecords: [PlayerRecord]
+    @State var showingAddRecord: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -31,6 +32,17 @@ struct HistoricalResultView: View {
                         }
                     })
                 }
+            }
+            HStack {
+                Button("+") {
+                    showingAddRecord = true
+                }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .font(.title2)
+                .padding(30)
+                .sheet(isPresented: $showingAddRecord, content: {
+                    AddHistoricalResultView()
+                })
             }
         }
     }

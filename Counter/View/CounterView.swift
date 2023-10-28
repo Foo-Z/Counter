@@ -62,15 +62,15 @@ struct CounterView: View {
                 }
                 Button("+") {
                     showingAddPlayer = true
-                }.sheet(isPresented: $showingAddPlayer, content: {
+                }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .font(.title2)
+                .padding(30)
+                .sheet(isPresented: $showingAddPlayer, content: {
                     AddPlayerView()
                 })
-                .buttonStyle(BorderedProminentButtonStyle())
-                .padding(30)
-                .font(.title2)
-                //Spacer()
-                
             }
+            .padding(5)
             NavigationLink("Checkout") {
                 CheckoutView()
             }

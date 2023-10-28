@@ -57,7 +57,8 @@ struct CheckoutView: View {
                 buyinDollarAmount: (Float)(player.buyIn) * getChipValue(),
                 profitDollarAmount: (Float)(player.cashOut - player.buyIn) * getChipValue()
             )
-            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == player.name }).last ?? PlayerRecord(name: "impossible")
+            let playerName = player.name
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == playerName }).last ?? PlayerRecord(name: "impossible")
             
             if playerResult.profitDollarAmount >= 0 {
                 result.wins.append(playerResult)
