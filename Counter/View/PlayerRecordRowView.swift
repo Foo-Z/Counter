@@ -14,13 +14,13 @@ struct PlayerRecordRowView: View {
             Text("\(currentPlayer.name)")
                 .frame(width: 75)
             Text("\(currentPlayer.totalGameWinned)")
-                .frame(width: 50)
+                .frame(width: 40)
             Text("\(currentPlayer.totalGameLost)")
-                .frame(width: 50)
+                .frame(width: 40)
             Text("\(currentPlayer.chipLeaderCount)")
-                .frame(width: 50)
+                .frame(width: 40)
             Text(getProfit(profit: currentPlayer.totalProfit))
-                .frame(width: 75)
+                .frame(width: 85)
         }
     }
     func getProfit(profit: Float) ->String {

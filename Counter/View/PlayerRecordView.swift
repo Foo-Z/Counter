@@ -22,13 +22,13 @@ struct PlayerRecordView: View {
                     Text("Name")
                         .frame(width: 75)
                     Text("Win")
-                        .frame(width: 50)
+                        .frame(width: 40)
                     Text("Lose")
-                        .frame(width: 50)
+                        .frame(width: 40)
                     Text("CL")
-                        .frame(width: 50)
+                        .frame(width: 40)
                     Text("Profit")
-                        .frame(width: 75)
+                        .frame(width: 85)
                 }
                 ForEach(playerRecords) { playerRecord in
                     PlayerRecordRowView(currentPlayer: playerRecord)

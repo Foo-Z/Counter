@@ -16,6 +16,7 @@ struct AddHistoricalResultView: View {
     @State private var selectedPlayers: Set<String> = []
     @State private var playerProfits: [Float] = Array(repeating: 0, count: 12)
     @Environment(\.dismiss) private var dismiss
+    @Query private var playerRecords: [PlayerRecord]
     
     var body: some View {
         Text("Add Historical Result")
@@ -77,13 +78,29 @@ struct AddHistoricalResultView: View {
             result.name = "\(sessionDate) \(defaultGameLevel) MAX\(selectedPlayers.count)"
             for player in Array(selectedPlayers) {
                 if let index = Array(selectedPlayers).firstIndex(of: player) {
+                    let playerResult = Result.Player(
+                        name: player,
+                        buyinDollarAmount: (Float)(50),
+                        profitDollarAmount: (Float)(playerProfits[index])
+                    )
+                    let playerRecord = try! playerRecords.filter(#Predicate { $0.name == player }).last ?? PlayerRecord(name: "impossible")
                     if playerProfits[index] >= 0 {
-                        result.wins.append(Result.Player(name: player, buyinDollarAmount: 50.00, profitDollarAmount: playerProfits[index]))
+                        result.wins.append(playerResult)
+                        playerRecord.totalGameWinned += 1
                     } else {
-                        result.loses.append(Result.Player(name: player, buyinDollarAmount: 50.00, profitDollarAmount: playerProfits[index]))
+                        result.loses.append(playerResult)
+                        playerRecord.totalGameLost += 1
                     }
+                    playerRecord.totalProfit += playerResult.profitDollarAmount
+                    playerRecord.gamePlayed.append(result.name)
+                   
                 }
             }
+            result.wins.sort {$0.profitDollarAmount > $1.profitDollarAmount}
+            result.loses.sort {$0.profitDollarAmount > $1.profitDollarAmount}
+            let chipLeader = result.wins.first?.name ?? "Feiou"
+            let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: "impossible")
+            chipLeaderRecord.chipLeaderCount += 1
             context.insert(result)
             dismiss()
         }

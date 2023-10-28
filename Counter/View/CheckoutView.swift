@@ -46,7 +46,8 @@ struct CheckoutView: View {
     
     func saveResult() {
         let sessionName = getSessionName()
-        if results.last?.name ?? "" == sessionName {
+//        let currentResult = try! results.filter(#Predicate { $0.name == sessionName}).last ?? nil
+        if try! results.filter(#Predicate { $0.name == sessionName}).last ?? nil != nil {
             return
         }
         let result = Result()
