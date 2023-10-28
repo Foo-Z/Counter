@@ -16,6 +16,8 @@ struct CounterView: View {
     @State var showingAddPlayer: Bool = false
     @State var showingSettings: Bool =  false
     @State var showingStartPage: Bool = false
+    @State var showingShuffleSeat: Bool = false
+    @State var seat: [Int] = []
     
     var body: some View {
         NavigationStack {
@@ -37,14 +39,17 @@ struct CounterView: View {
             VStack {
                 List {
                     ForEach(players) { player in
-                        PlayerView(currentPlayer: player)
-                            .swipeActions(edge: .leading) {
-                                Button("Undo") {
-                                    player.buyIn -= getIncrement()
-                                    try? context.save()
+                        if let index = Array(players).firstIndex(of: player) {
+                            let seatNumber = seat.count <= index ? index + 1 : seat[index]
+                            PlayerView(currentPlayer: player, seatNumber: seatNumber)
+                                .swipeActions(edge: .leading) {
+                                    Button("Undo") {
+                                        player.buyIn -= getIncrement()
+                                        try? context.save()
+                                    }
+                                    .tint(.orange)
                                 }
-                                .tint(.orange)
-                            }
+                        }
                     }
                     .onDelete(perform: { indexSet in
                         for index in indexSet {
@@ -54,18 +59,36 @@ struct CounterView: View {
                 }
             }
             HStack {
+                Button(action: {
+                    showingShuffleSeat = true
+                    shuffleSeat()
+                }) {
+                    Image(systemName: "shuffle")
+                }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .font(.title3)
+                .padding(10)
                 Spacer()
                 VStack(spacing: 10) {
                     Text("Average chips: \(getAverageChips())")
                     Text("Total chips are: \(getTotalChips())")
                     Text("Total buy in value is: $ \(getTotalBuyIn())")
                 }
-                Button("+") {
+                .alert(isPresented: $showingShuffleSeat) {
+                    Alert(
+                        title: Text("Shuffle Seat"),
+                        message: Text("Player seat have been shuffled."),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+                Button(action: {
                     showingAddPlayer = true
+                }) {
+                    Image(systemName: "plus")
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
-                .font(.title2)
-                .padding(30)
+                .font(.title3)
+                .padding(10)
                 .sheet(isPresented: $showingAddPlayer, content: {
                     AddPlayerView()
                 })
@@ -79,6 +102,15 @@ struct CounterView: View {
             .font(.title2)
         }
         .navigationBarBackButtonHidden()
+    }
+    
+    func shuffleSeat() {
+        self.seat.removeAll()
+        let count = players.count
+        for index in 0..<count {
+            self.seat.append(index + 1)
+        }
+        seat.shuffle()
     }
     
     func removePlayer(_ player: Player) {

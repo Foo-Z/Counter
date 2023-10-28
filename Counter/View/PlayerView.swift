@@ -12,10 +12,14 @@ struct PlayerView: View {
     @Environment(\.modelContext) private var context
     @Query private var settings: [Setting]
     var currentPlayer: Player
+    var seatNumber: Int
     
     var body: some View {
         HStack {
             Text(currentPlayer.name)
+                .frame(width: 100, alignment: .leading)
+            Text("Seat: \(seatNumber)")
+                .font(.system(size:14))
             Spacer()
             Text("\(currentPlayer.buyIn)")
                 .frame(width: 60)
@@ -33,6 +37,7 @@ struct PlayerView: View {
 }
 #Preview {
     PlayerView(
-        currentPlayer: Player(name: "test")
+        currentPlayer: Player(name: "test"),
+        seatNumber: 1
     )
 }
