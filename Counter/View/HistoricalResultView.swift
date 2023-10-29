@@ -34,8 +34,10 @@ struct HistoricalResultView: View {
                 }
             }
             HStack {
-                Button("+") {
+                Button(action: {
                     showingAddRecord = true
+                }) {
+                    Image(systemName: "plus")
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
                 .font(.title2)
