@@ -28,6 +28,11 @@ struct CounterView: View {
                 .sheet(isPresented: $showingSettings, content: {
                     SettingView()
                 })
+                .onAppear() {
+                    if settings.isEmpty {
+                        context.insert(Setting(increment: 500, valuePerChip: 0.1, gameLevel: "0.5/0.5"))
+                    }
+                }
                 Spacer()
                 Button("Add New Session") {
                     showingStartPage = true

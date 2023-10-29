@@ -14,6 +14,9 @@ struct SelectPlayerView: View {
     @Query private var playerRecords: [PlayerRecord]
     
     var body: some View {
+        Text("Tap to select players")
+            .font(.title2)
+            .padding(10)
         List {
             ForEach(playerRecords) { item in
                 Button(action: {
