@@ -26,24 +26,21 @@ struct ResultView: View {
                 Text("Chip leader is: \(getChipLeader())").font(.title2)
             }
             FireworksView()
-        }.frame(height: 90)
+        }.frame(height: 85)
         VStack {
             List {
                 ForEach(getResult().wins) { player in
                     PlayerResultView(currentPlayer: player)
                 }
-            }
-        }
-        Spacer()
-        Text("---------------- water ----------------")
-        Spacer()
-        VStack {
-            List {
+                Text("---------------- water ----------------")
+                    .frame(width: 600, alignment: .center)
+                    .foregroundColor(Color.blue)
                 ForEach(getResult().loses) { player in
                     PlayerResultView(currentPlayer: player)
                 }
             }
         }
+        Spacer()
     }
     
     func getResult() -> Result {

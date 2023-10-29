@@ -67,12 +67,12 @@ struct CounterView: View {
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
                 .font(.title3)
-                .padding(10)
+                .padding(20)
                 Spacer()
                 VStack(spacing: 10) {
                     Text("Average chips: \(getAverageChips())")
-                    Text("Total chips are: \(getTotalChips())")
-                    Text("Total buy in value is: $ \(getTotalBuyIn())")
+                    Text("Total chips: \(getTotalChips())")
+                    Text("Total buy in: $ \(getTotalBuyIn())")
                 }
                 .alert(isPresented: $showingShuffleSeat) {
                     Alert(
@@ -81,6 +81,7 @@ struct CounterView: View {
                         dismissButton: .default(Text("OK"))
                     )
                 }
+                Spacer()
                 Button(action: {
                     showingAddPlayer = true
                 }) {
@@ -88,18 +89,17 @@ struct CounterView: View {
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
                 .font(.title3)
-                .padding(10)
+                .padding(20)
                 .sheet(isPresented: $showingAddPlayer, content: {
                     AddPlayerView()
                 })
             }
-            .padding(5)
             NavigationLink("Checkout") {
                 CheckoutView()
             }
-            .padding(10)
+            .padding(5)
             .buttonStyle(BorderedProminentButtonStyle())
-            .font(.title2)
+            .font(.title3)
         }
         .navigationBarBackButtonHidden()
     }

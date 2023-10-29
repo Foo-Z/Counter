@@ -12,13 +12,15 @@ struct PlayerRecordRowView: View {
     var body: some View {
         HStack (alignment: .center) {
             Text("\(currentPlayer.name)")
-                .frame(width: 75)
+                .frame(width: 70)
+            Text("\(currentPlayer.totalGameWinned + currentPlayer.totalGameLost)")
+                .frame(width: 44)
             Text("\(currentPlayer.totalGameWinned)")
-                .frame(width: 40)
+                .frame(width: 30)
             Text("\(currentPlayer.totalGameLost)")
                 .frame(width: 40)
             Text("\(currentPlayer.chipLeaderCount)")
-                .frame(width: 40)
+                .frame(width: 30)
             Text(getProfit(profit: currentPlayer.totalProfit))
                 .frame(width: 85)
         }

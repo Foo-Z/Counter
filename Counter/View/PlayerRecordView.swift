@@ -20,13 +20,15 @@ struct PlayerRecordView: View {
             List {
                 HStack {
                     Text("Name")
-                        .frame(width: 75)
+                        .frame(width: 70)
+                    Text("Game")
+                        .frame(width: 45)
                     Text("Win")
-                        .frame(width: 40)
+                        .frame(width: 30)
                     Text("Lose")
                         .frame(width: 40)
                     Text("CL")
-                        .frame(width: 40)
+                        .frame(width: 30)
                     Text("Profit")
                         .frame(width: 85)
                 }

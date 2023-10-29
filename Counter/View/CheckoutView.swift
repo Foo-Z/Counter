@@ -36,7 +36,7 @@ struct CheckoutView: View {
                 }
             }
             .buttonStyle(BorderedProminentButtonStyle())
-            .font(.title2)
+            .font(.title3)
             .padding(10)
         }
         .onTapGesture {
