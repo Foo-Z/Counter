@@ -54,11 +54,13 @@ struct HistoricalResultView: View {
             let playerRecord = try! playerRecords.filter(#Predicate { $0.name == win.name }).last ?? PlayerRecord(name: "impossible")
             playerRecord.totalGameWinned -= 1
             playerRecord.totalProfit -= win.profitDollarAmount
+            playerRecord.gamePlayed.remove(result.name)
         }
         for lose in loses {
             let playerRecord = try! playerRecords.filter(#Predicate { $0.name == lose.name }).last ?? PlayerRecord(name: "impossible")
             playerRecord.totalGameLost -= 1
             playerRecord.totalProfit -= lose.profitDollarAmount
+            playerRecord.gamePlayed.remove(result.name)
         }
         let chipLeader = result.wins.first?.name ?? "Feiou"
         let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: "impossible")

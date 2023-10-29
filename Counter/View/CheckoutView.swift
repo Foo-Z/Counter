@@ -46,7 +46,6 @@ struct CheckoutView: View {
     
     func saveResult() {
         let sessionName = getSessionName()
-//        let currentResult = try! results.filter(#Predicate { $0.name == sessionName}).last ?? nil
         if try! results.filter(#Predicate { $0.name == sessionName}).last ?? nil != nil {
             return
         }
@@ -69,7 +68,7 @@ struct CheckoutView: View {
                 playerRecord.totalGameLost += 1
             }
             playerRecord.totalProfit += playerResult.profitDollarAmount
-            playerRecord.gamePlayed.append(sessionName)
+            playerRecord.gamePlayed.insert(sessionName)
         }
         result.wins.sort {$0.profitDollarAmount > $1.profitDollarAmount}
         result.loses.sort {$0.profitDollarAmount > $1.profitDollarAmount}

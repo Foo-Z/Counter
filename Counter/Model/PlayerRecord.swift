@@ -16,7 +16,7 @@ class PlayerRecord: Identifiable, Equatable {
     var totalGameWinned: Int
     var totalGameLost: Int
     var chipLeaderCount: Int
-    var gamePlayed: [String]
+    var gamePlayed: Set<String>
     init(name: String) {
         self.name = name
         self.totalProfit = 0.0

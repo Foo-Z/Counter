@@ -14,7 +14,7 @@ struct PlayerRecordRowView: View {
             Text("\(currentPlayer.name)")
                 .frame(width: 70)
             Text("\(currentPlayer.totalGameWinned + currentPlayer.totalGameLost)")
-                .frame(width: 44)
+                .frame(width: 45)
             Text("\(currentPlayer.totalGameWinned)")
                 .frame(width: 30)
             Text("\(currentPlayer.totalGameLost)")

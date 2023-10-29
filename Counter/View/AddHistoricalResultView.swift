@@ -92,7 +92,7 @@ struct AddHistoricalResultView: View {
                         playerRecord.totalGameLost += 1
                     }
                     playerRecord.totalProfit += playerResult.profitDollarAmount
-                    playerRecord.gamePlayed.append(result.name)
+                    playerRecord.gamePlayed.insert(result.name)
                    
                 }
             }

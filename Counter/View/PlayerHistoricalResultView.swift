@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlayerHistoricalResultView: View {
     var playerName: String
-    var results: [Result]
+    var resultNames: [String]
     var body: some View {
         NavigationStack {
             Text("Historical Results for \(playerName)")
@@ -17,9 +17,9 @@ struct PlayerHistoricalResultView: View {
                 .padding(10)
             VStack {
                 List {
-                    ForEach(results) { result in
-                        NavigationLink("\(result.name)") {
-                            ResultView(resultId: result.name)
+                    ForEach(resultNames, id: \.self) { resultName in
+                        NavigationLink("\(resultName)") {
+                            ResultView(resultId: resultName)
                         }
                     }
                 }
@@ -29,5 +29,5 @@ struct PlayerHistoricalResultView: View {
 }
 
 #Preview {
-    PlayerHistoricalResultView(playerName: "Feiou", results: [])
+    PlayerHistoricalResultView(playerName: "Feiou", resultNames: [])
 }
