@@ -17,9 +17,10 @@ struct PlayerView: View {
     var body: some View {
         HStack {
             Text(currentPlayer.name)
-                .frame(width: 90, alignment: .leading)
-            Text("Seat: \(getSeatStringName(seatNumber: currentPlayer.seatNumber, totalPlayerNumber: totalPlayerNumber))")
-                .font(.system(size:12))
+                .frame(width: 110, alignment: .leading)
+            Text("\(getSeatStringName(seatNumber: currentPlayer.seatNumber, totalPlayerNumber: totalPlayerNumber))")
+                .frame(width: 30, alignment: .center)
+                .font(.system(size:13))
             Spacer()
             Text("\(currentPlayer.buyIn)")
                 .frame(width: 60)
