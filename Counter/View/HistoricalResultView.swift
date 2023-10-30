@@ -62,20 +62,20 @@ struct HistoricalResultView: View {
         let wins = result.wins
         let loses = result.loses
         for win in wins {
-            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == win.name }).last ?? PlayerRecord(name: "impossible")
-            playerRecord.totalGameWinned -= 1
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == win.name }).last ?? PlayerRecord(name: win.name)
+            playerRecord.totalGameWinned = max(0, playerRecord.totalGameWinned - 1)
             playerRecord.totalProfit -= win.profitDollarAmount
             playerRecord.gamePlayed.remove(result.name)
         }
         for lose in loses {
-            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == lose.name }).last ?? PlayerRecord(name: "impossible")
-            playerRecord.totalGameLost -= 1
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == lose.name }).last ?? PlayerRecord(name: lose.name)
+            playerRecord.totalGameLost = max(0, playerRecord.totalGameLost - 1)
             playerRecord.totalProfit -= lose.profitDollarAmount
             playerRecord.gamePlayed.remove(result.name)
         }
         let chipLeader = result.wins.first?.name ?? "Feiou"
-        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: "impossible")
-        chipLeaderRecord.chipLeaderCount -= 1
+        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: chipLeader)
+        chipLeaderRecord.chipLeaderCount = max(0, chipLeaderRecord.chipLeaderCount - 1)
         context.delete(result)
         try? context.save()
     }
@@ -84,7 +84,7 @@ struct HistoricalResultView: View {
         let result = Result()
         result.name = sessionName
         for playerResult in playerResults {
-            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == playerResult.name }).last ?? PlayerRecord(name: "impossible")
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == playerResult.name }).last ?? PlayerRecord(name: playerResult.name)
             if playerResult.profitDollarAmount >= 0 {
                 result.wins.append(playerResult)
                 playerRecord.totalGameWinned += 1
@@ -98,7 +98,7 @@ struct HistoricalResultView: View {
         result.wins.sort {$0.profitDollarAmount > $1.profitDollarAmount}
         result.loses.sort {$0.profitDollarAmount > $1.profitDollarAmount}
         let chipLeader = result.wins.first?.name ?? "Feiou"
-        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: "impossible")
+        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: chipLeader)
         chipLeaderRecord.chipLeaderCount += 1
         context.insert(result)
         try? context.save()

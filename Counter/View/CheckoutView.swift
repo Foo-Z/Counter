@@ -58,7 +58,7 @@ struct CheckoutView: View {
                 profitDollarAmount: (Float)(player.cashOut - player.buyIn) * getChipValue()
             )
             let playerName = player.name
-            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == playerName }).last ?? PlayerRecord(name: "impossible")
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == playerName }).last ?? PlayerRecord(name: playerName)
             
             if playerResult.profitDollarAmount >= 0 {
                 result.wins.append(playerResult)
@@ -73,7 +73,7 @@ struct CheckoutView: View {
         result.wins.sort {$0.profitDollarAmount > $1.profitDollarAmount}
         result.loses.sort {$0.profitDollarAmount > $1.profitDollarAmount}
         let chipLeader = result.wins.first?.name ?? "Feiou"
-        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: "impossible")
+        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: chipLeader)
         chipLeaderRecord.chipLeaderCount += 1
         context.insert(result)
     }

@@ -12,7 +12,7 @@ struct SelectPlayerView: View {
     @Environment(\.modelContext) private var context
     @Binding var selectedPlayers: Set<String>
     @Query private var playerRecords: [PlayerRecord]
-    
+
     var body: some View {
         Text("Tap to select players")
             .font(.title2)
@@ -34,11 +34,6 @@ struct SelectPlayerView: View {
                     isSelected: self.selectedPlayers.contains(item.name)
                 ))
             }
-            .onDelete(perform: { indexSet in
-                for index in indexSet {
-                    context.delete(playerRecords[index])
-                }
-            })
         }
     }
 }

@@ -12,6 +12,7 @@ struct PlayerRecordView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \PlayerRecord.totalProfit, order: .reverse) private var playerRecords: [PlayerRecord]
+    @State private var showingAlert = false
     var body: some View {
         NavigationStack {
             VStack {
@@ -39,6 +40,22 @@ struct PlayerRecordView: View {
                             PlayerRecordRowView(currentPlayer: playerRecord)
                         }
                         .buttonStyle(PlainButtonStyle())
+                    }
+                    .onDelete(perform: { indexSet in
+                        for index in indexSet {
+                            if !playerRecords[index].gamePlayed.isEmpty {
+                                showingAlert = true
+                            } else {
+                                context.delete(playerRecords[index])
+                            }
+                        }
+                    })
+                    .alert(isPresented: $showingAlert) {
+                        Alert(
+                            title: Text("Invalid operation!"),
+                            message: Text("Please remove all historical results the player played before removing the player."),
+                            dismissButton: .default(Text("OK"))
+                        )
                     }
                 }
             }

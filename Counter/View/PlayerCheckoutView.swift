@@ -12,7 +12,6 @@ struct PlayerCheckoutView: View {
     @Environment(\.modelContext) private var context
     var currentPlayer: Player
     @State private var cashout: Int?
-    @State private var showingAlert = false
     @FocusState var isOnFocused: Bool
     
     var body: some View {
