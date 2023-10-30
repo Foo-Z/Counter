@@ -11,38 +11,19 @@ import SwiftData
 @Model
 class Player: Identifiable, Equatable {
     var playerId: String = UUID().uuidString
+    var seatNumber: Int
     var name: String
     var buyIn: Int
     var cashOut: Int
     var vpip: Int = 0
     var pfr: Int = 0
-    init(name: String) {
-        self.name = name
-        buyIn = 500
-        cashOut = 0
-        vpip = 0
-        pfr = 0
-    }
-    init(name: String, buyIn: Int) {
+
+    init(name: String, buyIn: Int, seatNumber: Int) {
+        self.seatNumber = seatNumber
         self.name = name
         self.buyIn = buyIn
         cashOut = 0
         vpip = 0
         pfr = 0
     }
-}
-
-extension Player {
-    static let all = [
-        Player(name: "Foo"),
-        Player(name: "Lw"),
-        Player(name: "Zhy"),
-        Player(name: "Yhw"),
-        Player(name: "ZCL"),
-        Player(name: "Yunong"),
-        Player(name: "J"),
-        Player(name: "Rick"),
-        Player(name: "Dingding"),
-        Player(name: "Yuan"),
-    ]
 }

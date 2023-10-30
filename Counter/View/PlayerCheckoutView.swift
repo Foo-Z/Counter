@@ -37,5 +37,5 @@ struct PlayerCheckoutView: View {
     }
 }
 #Preview {
-    PlayerCheckoutView(currentPlayer: Player(name: "test"))
+    PlayerCheckoutView(currentPlayer: Player(name: "test", buyIn: 500, seatNumber: 1))
 }

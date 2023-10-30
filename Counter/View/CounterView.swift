@@ -11,13 +11,12 @@ import SwiftData
 struct CounterView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
-    @Query private var players: [Player]
+    @Query(sort: \Player.seatNumber) private var players: [Player]
     @Query private var settings: [Setting]
     @State var showingAddPlayer: Bool = false
     @State var showingSettings: Bool =  false
     @State var showingStartPage: Bool = false
     @State var showingShuffleSeat: Bool = false
-    @State var seat: [Int] = []
     
     var body: some View {
         NavigationStack {
@@ -44,17 +43,14 @@ struct CounterView: View {
             VStack {
                 List {
                     ForEach(players) { player in
-                        if let index = Array(players).firstIndex(of: player) {
-                            let seatNumber = seat.count <= index ? index + 1 : seat[index]
-                            PlayerView(currentPlayer: player, seatNumber: seatNumber)
-                                .swipeActions(edge: .leading) {
-                                    Button("Undo") {
-                                        player.buyIn -= getIncrement()
-                                        try? context.save()
-                                    }
-                                    .tint(.orange)
+                        PlayerView(currentPlayer: player, totalPlayerNumber: players.count)
+                            .swipeActions(edge: .leading) {
+                                Button("Undo") {
+                                    player.buyIn -= getIncrement()
+                                    try? context.save()
                                 }
-                        }
+                                .tint(.orange)
+                            }
                     }
                     .onDelete(perform: { indexSet in
                         for index in indexSet {
@@ -96,7 +92,7 @@ struct CounterView: View {
                 .font(.title3)
                 .padding(20)
                 .sheet(isPresented: $showingAddPlayer, content: {
-                    AddPlayerView()
+                    AddPlayerView(playerSeatNumber: players.count + 1)
                 })
             }
             NavigationLink("Checkout") {
@@ -110,12 +106,18 @@ struct CounterView: View {
     }
     
     func shuffleSeat() {
-        self.seat.removeAll()
         let count = players.count
+        var seat: [Int] = []
         for index in 0..<count {
-            self.seat.append(index + 1)
+            seat.append(index + 1)
         }
         seat.shuffle()
+        for player in players {
+            if let index = Array(players).firstIndex(of: player) {
+                player.seatNumber = seat[index]
+            }
+        }
+        try? context.save()
     }
     
     func removePlayer(_ player: Player) {

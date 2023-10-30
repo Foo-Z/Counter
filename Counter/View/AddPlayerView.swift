@@ -12,8 +12,8 @@ struct AddPlayerView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     @State private var name = ""
+    var playerSeatNumber: Int
     @State private var buyIn: Int = 500
-    @Query private var playerRecords: [PlayerRecord]
     var body: some View {
         Text("Add New Player")
             .font(.title2)
@@ -55,7 +55,7 @@ struct AddPlayerView: View {
     
     func addNewPlayer() {
         if !name.isEmpty {
-            context.insert(Player(name: name, buyIn: buyIn))
+            context.insert(Player(name: name, buyIn: buyIn, seatNumber: playerSeatNumber))
             context.insert(PlayerRecord(name: name))
         }
         name = ""
@@ -63,5 +63,5 @@ struct AddPlayerView: View {
 }
 
 #Preview {
-    AddPlayerView()
+    AddPlayerView(playerSeatNumber: 1)
 }

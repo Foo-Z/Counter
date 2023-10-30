@@ -34,6 +34,6 @@ struct PlayerVpipView: View {
 
 #Preview {
     PlayerVpipView(
-        currentPlayer: Player(name: "test")
+        currentPlayer: Player(name: "test", buyIn: 500, seatNumber: 1)
     )
 }

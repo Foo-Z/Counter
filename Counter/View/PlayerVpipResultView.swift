@@ -32,5 +32,5 @@ struct PlayerVpipResultView: View {
 }
 
 #Preview {
-    PlayerVpipResultView(currentPlayer: Player(name: "test"), total_hands: 1)
+    PlayerVpipResultView(currentPlayer: Player(name: "test", buyIn: 500, seatNumber: 1), total_hands: 1)
 }

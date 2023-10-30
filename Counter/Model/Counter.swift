@@ -39,10 +39,10 @@ class Counter: Identifiable {
         return players[playerIndex].buyIn
     }
     
-    func addNewPlayer(name: String) {
-        players.append(Player(name: name));
-    }
-    
+//    func addNewPlayer(name: String) {
+//        players.append(Player(name: name));
+//    }
+//    
     func getTotalChips() -> Int {
         var sum: Int = 0
         for player in players {

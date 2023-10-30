@@ -23,9 +23,9 @@ class CounterViewModel: ObservableObject {
         model.buyin(player: player, buyIn: buyIn)
     }
     
-    func addNewPlayer(name: String) {
-        model.addNewPlayer(name: name)
-    }
+//    func addNewPlayer(name: String) {
+//        model.addNewPlayer(name: name)
+//    }
     
     func getIncrement() -> Int {
         model.increment
@@ -38,16 +38,4 @@ class CounterViewModel: ObservableObject {
     func changeIncrement(increment: Int) {
         model.increment = increment
     }
-    var testPlayers = [
-        Player(name: "Foo"),
-        Player(name: "Lw"),
-        Player(name: "Zhy"),
-        Player(name: "Yhw"),
-        Player(name: "ZCL"),
-        Player(name: "Yunong"),
-        Player(name: "J"),
-        Player(name: "Rick"),        
-        Player(name: "Dingding"),
-        Player(name: "Yuan")
-    ]
 }

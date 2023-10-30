@@ -92,8 +92,8 @@ struct StartView: View {
     }
     
     func addPlayers(_: Int) {
-        for player in selectedPlayers {
-            context.insert(Player(name: player, buyIn: defaultBuyIn))
+        for (index, player) in selectedPlayers.enumerated() {
+            context.insert(Player(name: player, buyIn: defaultBuyIn, seatNumber: index + 1))
         }
     }
     
