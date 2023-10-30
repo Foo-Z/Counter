@@ -35,6 +35,15 @@ struct HistoricalResultView: View {
             }
             HStack {
                 Button(action: {
+                    addHistoricalResultRecords()
+                }) {
+                    Image(systemName: "arrow.down")
+                }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .font(.title3)
+                .padding(30)
+                
+                Button(action: {
                     showingAddRecord = true
                 }) {
                     Image(systemName: "plus")
@@ -69,6 +78,44 @@ struct HistoricalResultView: View {
         chipLeaderRecord.chipLeaderCount -= 1
         context.delete(result)
         try? context.save()
+    }
+    
+    func addHistoricalResultRecord(sessionName: String, playerResults: [Result.Player]) {
+        let result = Result()
+        result.name = sessionName
+        for playerResult in playerResults {
+            let playerRecord = try! playerRecords.filter(#Predicate { $0.name == playerResult.name }).last ?? PlayerRecord(name: "impossible")
+            if playerResult.profitDollarAmount >= 0 {
+                result.wins.append(playerResult)
+                playerRecord.totalGameWinned += 1
+            } else {
+                result.loses.append(playerResult)
+                playerRecord.totalGameLost += 1
+            }
+            playerRecord.totalProfit += playerResult.profitDollarAmount
+            playerRecord.gamePlayed.insert(result.name)
+        }
+        result.wins.sort {$0.profitDollarAmount > $1.profitDollarAmount}
+        result.loses.sort {$0.profitDollarAmount > $1.profitDollarAmount}
+        let chipLeader = result.wins.first?.name ?? "Feiou"
+        let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: "impossible")
+        chipLeaderRecord.chipLeaderCount += 1
+        context.insert(result)
+        try? context.save()
+    }
+    
+    func addHistoricalResultRecords() {
+        addHistoricalResultRecord(
+            sessionName: "2023/10/30 19:00 0.5/0.5 MAX7", playerResults: [
+                Result.Player(name: "Feiou", buyinDollarAmount: 50.00, profitDollarAmount: 20.00),
+                Result.Player(name: "Lw", buyinDollarAmount: 50.00, profitDollarAmount: 30.00),
+                Result.Player(name: "Rick", buyinDollarAmount: 50.00, profitDollarAmount: 30.00),
+                Result.Player(name: "Yunong", buyinDollarAmount: 50.00, profitDollarAmount: 30.00),
+                Result.Player(name: "Colin", buyinDollarAmount: 50.00, profitDollarAmount: 30.00),
+                Result.Player(name: "Herry", buyinDollarAmount: 50.00, profitDollarAmount: 30.00),
+                Result.Player(name: "J", buyinDollarAmount: 50.00, profitDollarAmount: 30.00)
+            ]
+        )
     }
 }
 

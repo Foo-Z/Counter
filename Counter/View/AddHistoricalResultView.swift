@@ -102,6 +102,7 @@ struct AddHistoricalResultView: View {
             let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: "impossible")
             chipLeaderRecord.chipLeaderCount += 1
             context.insert(result)
+            try? context.save()
             dismiss()
         }
         .font(.title2)
