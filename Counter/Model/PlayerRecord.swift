@@ -26,3 +26,27 @@ class PlayerRecord: Identifiable, Equatable {
         self.gamePlayed = []
     }
 }
+
+extension PlayerRecord {
+    static let defaultPlayerRecords: [PlayerRecord] = [
+        PlayerRecord(name: "Feiou"),
+        PlayerRecord(name: "Lw"),
+        PlayerRecord(name: "Rick"),
+        PlayerRecord(name: "Yunong"),
+        PlayerRecord(name: "Colin"),
+        PlayerRecord(name: "恰空"),
+        PlayerRecord(name: "浩文"),
+        PlayerRecord(name: "涵羽"),
+        PlayerRecord(name: "王皓"),
+        PlayerRecord(name: "超伦"),
+        PlayerRecord(name: "叮叮"),
+        PlayerRecord(name: "Herry"),
+        PlayerRecord(name: "Weiran"),
+        PlayerRecord(name: "Mika"),
+        PlayerRecord(name: "少桐"),
+        PlayerRecord(name: "Lei"),
+        PlayerRecord(name: "Chelsea"),
+        PlayerRecord(name: "Ac"),
+        PlayerRecord(name: "邵楠")
+    ]
+}

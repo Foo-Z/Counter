@@ -41,25 +41,9 @@ struct CounterView: View {
                 })
                 .onAppear() {
                     if playerRecords.isEmpty {
-                        context.insert(PlayerRecord(name: "Feiou"))
-                        context.insert(PlayerRecord(name: "Lw"))
-                        context.insert(PlayerRecord(name: "Rick"))
-                        context.insert(PlayerRecord(name: "Yunong"))
-                        context.insert(PlayerRecord(name: "Colin"))
-                        context.insert(PlayerRecord(name: "恰空"))
-                        context.insert(PlayerRecord(name: "浩文"))
-                        context.insert(PlayerRecord(name: "涵羽"))
-                        context.insert(PlayerRecord(name: "王皓"))
-                        context.insert(PlayerRecord(name: "超伦"))
-                        context.insert(PlayerRecord(name: "叮叮"))
-                        context.insert(PlayerRecord(name: "Herry"))
-                        context.insert(PlayerRecord(name: "Weiran"))
-                        context.insert(PlayerRecord(name: "Mika"))
-                        context.insert(PlayerRecord(name: "少桐"))
-                        context.insert(PlayerRecord(name: "Lei"))
-                        context.insert(PlayerRecord(name: "Chelsea"))
-                        context.insert(PlayerRecord(name: "Ac"))
-                        context.insert(PlayerRecord(name: "邵楠"))
+                        for defaultPlayerRecord in PlayerRecord.defaultPlayerRecords {
+                            context.insert(defaultPlayerRecord)
+                        }
                     }
                 }
             }

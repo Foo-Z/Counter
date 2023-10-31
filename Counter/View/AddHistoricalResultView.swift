@@ -10,6 +10,7 @@ import SwiftData
 
 struct AddHistoricalResultView: View {
     @Environment(\.modelContext) private var context
+    @Query() private var results: [Result]
     @State private var sessionDate: String = "2023/01/01 19:00"
     @State private var defaultGameLevel: String = "0.5/0.5"
     @State var showingSelector: Bool =  false
@@ -74,7 +75,12 @@ struct AddHistoricalResultView: View {
         Spacer()
         
         Button("OK") {
-            let result = Result(name: "\(sessionDate) \(defaultGameLevel) MAX\(selectedPlayers.count)")
+            let sessionName = "\(sessionDate) \(defaultGameLevel) MAX\(selectedPlayers.count)"
+            let checkResult = try! results.filter(#Predicate { $0.name == sessionName})
+            if !checkResult.isEmpty {
+                return
+            }
+            let result = Result(name: sessionName)
             for player in Array(selectedPlayers) {
                 if let index = Array(selectedPlayers).firstIndex(of: player) {
                     let playerResult = Result.Player(
@@ -92,7 +98,6 @@ struct AddHistoricalResultView: View {
                     }
                     playerRecord.totalProfit += playerResult.profitDollarAmount
                     playerRecord.gamePlayed.insert(result.name)
-                   
                 }
             }
             result.wins.sort {$0.profitDollarAmount > $1.profitDollarAmount}

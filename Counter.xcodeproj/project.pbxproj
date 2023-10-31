@@ -40,6 +40,7 @@
 		E3EED4A32AE90DC3006DF854 /* PlayerRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EED4A22AE90DC3006DF854 /* PlayerRecordView.swift */; };
 		E3EED4A52AE90E8E006DF854 /* PlayerRecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EED4A42AE90E8E006DF854 /* PlayerRecordRowView.swift */; };
 		E3EED4A72AEDC3AD006DF854 /* PlayerHistoricalResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EED4A62AEDC3AD006DF854 /* PlayerHistoricalResultView.swift */; };
+		E3F59FB82AF17E3500984EDA /* HistoricalResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F59FB72AF17E3500984EDA /* HistoricalResult.swift */; };
 		E3FAE4702AE9C2B900A08613 /* AddHistoricalResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FAE46F2AE9C2B900A08613 /* AddHistoricalResultView.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		E3EED4A22AE90DC3006DF854 /* PlayerRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRecordView.swift; sourceTree = "<group>"; };
 		E3EED4A42AE90E8E006DF854 /* PlayerRecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRecordRowView.swift; sourceTree = "<group>"; };
 		E3EED4A62AEDC3AD006DF854 /* PlayerHistoricalResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHistoricalResultView.swift; sourceTree = "<group>"; };
+		E3F59FB72AF17E3500984EDA /* HistoricalResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalResult.swift; sourceTree = "<group>"; };
 		E3FAE46F2AE9C2B900A08613 /* AddHistoricalResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoricalResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +196,7 @@
 				E3963A5E2ACB8EEC0032D4B1 /* Setting.swift */,
 				E372654A2ACDE01B00E8997D /* Result.swift */,
 				E3825BF12AE8EBBD00891E7A /* PlayerRecord.swift */,
+				E3F59FB72AF17E3500984EDA /* HistoricalResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				E37265562AD2364D00E8997D /* PlayerVpipView.swift in Sources */,
 				E3963A572ACA328C0032D4B1 /* PlayerView.swift in Sources */,
 				E393A95C2AD9F186006762F7 /* HistoricalResultView.swift in Sources */,
+				E3F59FB82AF17E3500984EDA /* HistoricalResult.swift in Sources */,
 				E3825BEC2AD9345B00891E7A /* VpipResultView.swift in Sources */,
 				E37265582AD2374F00E8997D /* VpipView.swift in Sources */,
 				E3EED4A72AEDC3AD006DF854 /* PlayerHistoricalResultView.swift in Sources */,
