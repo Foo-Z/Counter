@@ -18,11 +18,14 @@ struct CounterView: View {
     @State var showingSettings: Bool =  false
     @State var showingStartPage: Bool = false
     @State var showingShuffleSeat: Bool = false
+    @State var showingVampire: Bool = false
+    @State private var vampires: Set<String> = []
+    @State var halloweenBonus: Int = 0
     
     var body: some View {
         NavigationStack {
             HStack {
-                Button("Settings") {
+                Button("  Settings") {
                     showingSettings = true
                 }
                 .sheet(isPresented: $showingSettings, content: {
@@ -34,7 +37,22 @@ struct CounterView: View {
                     }
                 }
                 Spacer()
-                Button("Add New Session") {
+                Button("  🎃") {
+                    getVampire()
+                    getHalloweenBonus()
+                    showingVampire = true
+                }
+                .background(Color.clear)
+                .font(.title3)
+                .alert(isPresented: $showingVampire) {
+                    Alert(
+                        title: Text("Halloween Special"),
+                        message: Text("Vampires get \(halloweenBonus) chips from everyone!"),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+                Spacer()
+                Button("New Session") {
                     showingStartPage = true
                 }.sheet(isPresented: $showingStartPage, content: {
                     StartView()
@@ -51,7 +69,7 @@ struct CounterView: View {
             VStack {
                 List {
                     ForEach(players) { player in
-                        PlayerView(currentPlayer: player, totalPlayerNumber: players.count)
+                        PlayerView(currentPlayer: player, totalPlayerNumber: players.count, vampires: $vampires)
                             .swipeActions(edge: .leading) {
                                 Button("Undo") {
                                     player.buyIn -= getIncrement()
@@ -77,12 +95,6 @@ struct CounterView: View {
                 .buttonStyle(BorderedProminentButtonStyle())
                 .font(.title3)
                 .padding(20)
-                Spacer()
-                VStack(spacing: 10) {
-                    Text("Average chips: \(getAverageChips())")
-                    Text("Total chips: \(getTotalChips())")
-                    Text("Total buy in: $ \(getTotalBuyIn())")
-                }
                 .alert(isPresented: $showingShuffleSeat) {
                     Alert(
                         title: Text("Shuffle Seat"),
@@ -90,6 +102,14 @@ struct CounterView: View {
                         dismissButton: .default(Text("OK"))
                     )
                 }
+                Spacer()
+                VStack(spacing: 10) {
+                    Text("Average chips: \(getAverageChips())")
+//                    Text("Total chips: \(getTotalChips())")
+//                    Text("Total buy in: $ \(getTotalBuyIn())")
+                    Text("Halloween bonus: \(halloweenBonus) chips")
+                }
+                .font(.system(size:13))
                 Spacer()
                 Button(action: {
                     showingAddPlayer = true
@@ -157,6 +177,23 @@ struct CounterView: View {
             return 0
         }
         return getTotalChips() / players.count
+    }
+    
+    func getVampire() {
+        if players.isEmpty {
+            return
+        }
+        var playerCopy:[Player] = Array(players)
+        let numberOfVampire = min(playerCopy.count, (settings.first?.numberOfVampire ?? 1))
+        playerCopy.shuffle()
+        self.vampires.removeAll()
+        for i in 0..<numberOfVampire {
+            self.vampires.insert(playerCopy[i].name)
+        }
+    }
+    
+    func getHalloweenBonus() {
+        halloweenBonus = Int.random(in: 0...(settings.first?.maxRewardChips ?? 100)) / 5 * 5
     }
 }
 

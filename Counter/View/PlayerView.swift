@@ -13,6 +13,7 @@ struct PlayerView: View {
     @Query private var settings: [Setting]
     var currentPlayer: Player
     var totalPlayerNumber: Int
+    @Binding var vampires: Set<String>
     
     var body: some View {
         HStack {
@@ -21,6 +22,7 @@ struct PlayerView: View {
             Text("\(getSeatStringName(seatNumber: currentPlayer.seatNumber, totalPlayerNumber: totalPlayerNumber))")
                 .frame(width: 50, alignment: .center)
                 .font(.system(size:13))
+            Text("\(showVampire())")
             Spacer()
             Text("\(currentPlayer.buyIn)")
                 .frame(width: 60)
@@ -30,6 +32,13 @@ struct PlayerView: View {
             }
             .buttonStyle(BorderedProminentButtonStyle())
         }
+    }
+    
+    func showVampire() -> String {
+        if vampires.contains(currentPlayer.name) {
+            return "👻"
+        }
+        return ""
     }
     
     func getIncrement() -> Int {
@@ -199,7 +208,8 @@ struct PlayerView: View {
     }
 }
 #Preview {
-    PlayerView(
-        currentPlayer: Player(name: "test", buyIn: 500, seatNumber: 1), totalPlayerNumber: 6
+    let vampires: Binding<Set<String>> = .constant(Set(["Item 1", "Item 3"]))
+    return PlayerView(
+        currentPlayer: Player(name: "test", buyIn: 500, seatNumber: 1), totalPlayerNumber: 6, vampires: vampires
     )
 }
