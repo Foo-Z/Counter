@@ -89,6 +89,8 @@ struct CounterView: View {
                 Button(action: {
                     showingShuffleSeat = true
                     shuffleSeat()
+                    vampires.removeAll()
+                    halloweenBonus = 0
                 }) {
                     Image(systemName: "shuffle")
                 }
@@ -113,6 +115,8 @@ struct CounterView: View {
                 Spacer()
                 Button(action: {
                     showingAddPlayer = true
+                    vampires.removeAll()
+                    halloweenBonus = 0
                 }) {
                     Image(systemName: "plus")
                 }
