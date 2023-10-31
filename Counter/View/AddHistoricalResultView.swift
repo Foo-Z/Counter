@@ -74,8 +74,7 @@ struct AddHistoricalResultView: View {
         Spacer()
         
         Button("OK") {
-            let result = Result()
-            result.name = "\(sessionDate) \(defaultGameLevel) MAX\(selectedPlayers.count)"
+            let result = Result(name: "\(sessionDate) \(defaultGameLevel) MAX\(selectedPlayers.count)")
             for player in Array(selectedPlayers) {
                 if let index = Array(selectedPlayers).firstIndex(of: player) {
                     let playerResult = Result.Player(

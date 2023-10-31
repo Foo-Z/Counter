@@ -49,8 +49,7 @@ struct CheckoutView: View {
         if try! results.filter(#Predicate { $0.name == sessionName}).last ?? nil != nil {
             return
         }
-        let result = Result()
-        result.name = sessionName
+        let result = Result(name: sessionName)
         for player in players {
             let playerResult = Result.Player(
                 name: player.name,

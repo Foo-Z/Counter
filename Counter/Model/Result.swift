@@ -28,4 +28,9 @@ class Result {
         wins = []
         loses = []
     }
+    init(name: String) {
+        self.name = name
+        wins = []
+        loses = []
+    }
 }
