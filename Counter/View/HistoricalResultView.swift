@@ -10,7 +10,7 @@ import SwiftData
 
 struct HistoricalResultView: View {
     @Environment(\.modelContext) private var context
-    @Query(sort: \Result.name) private var results: [Result]
+    @Query(sort: \Result.name, order: .reverse) private var results: [Result]
     @Query private var playerRecords: [PlayerRecord]
     @State var showingAddRecord: Bool = false
     

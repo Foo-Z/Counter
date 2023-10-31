@@ -36,7 +36,7 @@ struct PlayerRecordView: View {
                         Text(" ")
                     }
                     ForEach(playerRecords) { playerRecord in
-                        NavigationLink(destination: PlayerHistoricalResultView(playerName: playerRecord.name, resultNames: Array(playerRecord.gamePlayed))) {
+                        NavigationLink(destination: PlayerHistoricalResultView(playerName: playerRecord.name, resultNames: Array(playerRecord.gamePlayed).sorted(by: >))) {
                             PlayerRecordRowView(currentPlayer: playerRecord)
                         }
                         .buttonStyle(PlainButtonStyle())
