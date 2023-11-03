@@ -21,6 +21,7 @@ struct CounterView: View {
     @State var showingVampire: Bool = false
     @State private var vampires: Set<String> = []
     @State var halloweenBonus: Int = 0
+    @State var showingPrizeWheel: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -51,6 +52,15 @@ struct CounterView: View {
                         dismissButton: .default(Text("OK"))
                     )
                 }
+                Spacer()
+                Button("  💣") {
+                    showingPrizeWheel = true
+                }
+                .background(Color.clear)
+                .font(.title3)
+                .sheet(isPresented: $showingPrizeWheel, content: {
+                    //PrizeWheelView()
+                })
                 Spacer()
                 Button("New Session") {
                     showingStartPage = true
