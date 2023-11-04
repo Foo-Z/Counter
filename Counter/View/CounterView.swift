@@ -61,12 +61,15 @@ struct CounterView: View {
                 .background(Color.clear)
                 .font(.title3)
                 .sheet(isPresented: $showingPrizeWheel, content: {
-                    Text("Spin to choose the type of Boom Pot").font(.title2)
+                    Text("Spin to choose the type of Boom Pot")
+                        .padding(10)
+                        .font(.title2)
                     Spacer()
-                    FortuneWheel(titles: ["Double 4", "Giveup 1", "Show 1", "Else", "Giveup 1", "Show 1"], size: 320, onSpinEnd: onSpinEnd)
+                    FortuneWheel(titles: ["Double 4", "Giveup 1", "Show 1", "Giveup 3", "Giveup 1", "Show 1", "Giveup 3"], size: 320, onSpinEnd: onSpinEnd)
                     Spacer()
                     Text(boomPotMessage).font(.title3)
-                        .frame(width: 400, height: 100)
+                        .frame(height: 170)
+                        .padding(10)
                 })
                 Spacer()
                 Button("New Session") {
@@ -220,11 +223,13 @@ struct CounterView: View {
                 if index == 0 {
                     boomPotMessage = "Double board Omaha, skip freplop."
                 } else if index == 1 || index == 4 {
-                    boomPotMessage = "Everyone has three cards, play double board Texas Holdem by giving up one card by the choice of the player preflop."
+                    boomPotMessage = "Each player is dealt three cards and participates in a game of Double Board Texas Hold'em. Before the flop, players decide which card to discard, keeping two cards for the rest of the game."
                 }  else if index == 2 || index == 5 {
-                    boomPotMessage = "Everyone has two cards, play double board Texas Holdem with one card face up by the choice of the player preflop."
+                    boomPotMessage = "In Double Board Texas Hold'em, Each player starts with a hand of two cards,, and players need to choose one card to show face up before the flop."
+                } else if index == 3 || index == 6{
+                    boomPotMessage = "Each player starts with five cards, and each street is one round of a Boom Pot. To proceed to the next round, a player must pay 5 chips and discard one card until the river, then the remaining players continue with a standard game of Texas Hold'em."
                 } else {
-                    boomPotMessage = "Something else."
+                    boomPotMessage = "Must be a bug"
                 }
         // your action here - based on index
     }
