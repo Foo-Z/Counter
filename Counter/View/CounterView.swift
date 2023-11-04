@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import FortuneWheel
 
 struct CounterView: View {
     @Environment(\.modelContext) private var context
@@ -22,6 +23,7 @@ struct CounterView: View {
     @State private var vampires: Set<String> = []
     @State var halloweenBonus: Int = 0
     @State var showingPrizeWheel: Bool = false
+    @State var boomPotMessage: String = ""
     
     var body: some View {
         NavigationStack {
@@ -59,7 +61,12 @@ struct CounterView: View {
                 .background(Color.clear)
                 .font(.title3)
                 .sheet(isPresented: $showingPrizeWheel, content: {
-                    //PrizeWheelView()
+                    Text("Spin to choose the type of Boom Pot").font(.title2)
+                    Spacer()
+                    FortuneWheel(titles: ["Double 4", "Giveup 1", "Show 1", "Else", "Giveup 1", "Show 1"], size: 320, onSpinEnd: onSpinEnd)
+                    Spacer()
+                    Text(boomPotMessage).font(.title3)
+                        .frame(width: 400, height: 100)
                 })
                 Spacer()
                 Button("New Session") {
@@ -117,8 +124,8 @@ struct CounterView: View {
                 Spacer()
                 VStack(spacing: 10) {
                     Text("Average chips: \(getAverageChips())")
-//                    Text("Total chips: \(getTotalChips())")
-//                    Text("Total buy in: $ \(getTotalBuyIn())")
+                    //                    Text("Total chips: \(getTotalChips())")
+                    //                    Text("Total buy in: $ \(getTotalBuyIn())")
                     Text("Halloween bonus: \(halloweenBonus) chips")
                 }
                 .font(.system(size:13))
@@ -208,6 +215,18 @@ struct CounterView: View {
     
     func getHalloweenBonus() {
         halloweenBonus = Int.random(in: 0...(settings.first?.maxRewardChips ?? 100)) / 5 * 5
+    }
+    private func onSpinEnd(index: Int) {
+                if index == 0 {
+                    boomPotMessage = "Double board Omaha, skip freplop."
+                } else if index == 1 || index == 4 {
+                    boomPotMessage = "Everyone has three cards, play double board Texas Holdem by giving up one card by the choice of the player preflop."
+                }  else if index == 2 || index == 5 {
+                    boomPotMessage = "Everyone has two cards, play double board Texas Holdem with one card face up by the choice of the player preflop."
+                } else {
+                    boomPotMessage = "Something else."
+                }
+        // your action here - based on index
     }
 }
 

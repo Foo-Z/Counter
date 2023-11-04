@@ -20,6 +20,7 @@
 		E3825BEC2AD9345B00891E7A /* VpipResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3825BEB2AD9345B00891E7A /* VpipResultView.swift */; };
 		E3825BEE2AD934EC00891E7A /* PlayerVpipResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3825BED2AD934EC00891E7A /* PlayerVpipResultView.swift */; };
 		E3825BF22AE8EBBD00891E7A /* PlayerRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3825BF12AE8EBBD00891E7A /* PlayerRecord.swift */; };
+		E38A938D2AF5B7B8004C9C00 /* FortuneWheel in Frameworks */ = {isa = PBXBuildFile; productRef = E38A938C2AF5B7B8004C9C00 /* FortuneWheel */; };
 		E393A95C2AD9F186006762F7 /* HistoricalResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E393A95B2AD9F186006762F7 /* HistoricalResultView.swift */; };
 		E3963A232ACA198C0032D4B1 /* CounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3963A222ACA198C0032D4B1 /* CounterApp.swift */; };
 		E3963A272ACA198D0032D4B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3963A262ACA198D0032D4B1 /* Assets.xcassets */; };
@@ -107,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E38A938D2AF5B7B8004C9C00 /* FortuneWheel in Frameworks */,
 				E372654E2ACE00CA00E8997D /* EffectsLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +257,7 @@
 			name = Counter;
 			packageProductDependencies = (
 				E372654D2ACE00CA00E8997D /* EffectsLibrary */,
+				E38A938C2AF5B7B8004C9C00 /* FortuneWheel */,
 			);
 			productName = Counter;
 			productReference = E3963A1F2ACA198C0032D4B1 /* Counter.app */;
@@ -330,6 +333,7 @@
 			mainGroup = E3963A162ACA198C0032D4B1;
 			packageReferences = (
 				E372654C2ACE00CA00E8997D /* XCRemoteSwiftPackageReference "effects-library" */,
+				E38A938B2AF5B7B8004C9C00 /* XCRemoteSwiftPackageReference "FortuneWheel" */,
 			);
 			productRefGroup = E3963A202ACA198C0032D4B1 /* Products */;
 			projectDirPath = "";
@@ -772,6 +776,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E38A938B2AF5B7B8004C9C00 /* XCRemoteSwiftPackageReference "FortuneWheel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sameersyd/FortuneWheel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -779,6 +791,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E372654C2ACE00CA00E8997D /* XCRemoteSwiftPackageReference "effects-library" */;
 			productName = EffectsLibrary;
+		};
+		E38A938C2AF5B7B8004C9C00 /* FortuneWheel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E38A938B2AF5B7B8004C9C00 /* XCRemoteSwiftPackageReference "FortuneWheel" */;
+			productName = FortuneWheel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
