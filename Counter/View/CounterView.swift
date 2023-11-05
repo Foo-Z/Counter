@@ -65,7 +65,7 @@ struct CounterView: View {
                         .padding(10)
                         .font(.title2)
                     Spacer()
-                    FortuneWheel(titles: ["Double 4", "Giveup 1", "Show 1", "Giveup 3", "Giveup 1", "Show 1", "Giveup 3"], size: 320, onSpinEnd: onSpinEnd)
+                    FortuneWheel(titles: ["Double 4", "Giveup 1", "Show 1", "Giveup 3", "Giveup 1", "Show 1", "Giveup 3","Pass 1L","Pass 1R", "Board 6"], size: 320, onSpinEnd: onSpinEnd, animDuration: Double(2))
                     Spacer()
                     Text(boomPotMessage).font(.title3)
                         .frame(height: 170)
@@ -225,9 +225,15 @@ struct CounterView: View {
                 } else if index == 1 || index == 4 {
                     boomPotMessage = "Each player is dealt three cards and participates in a game of Double Board Texas Hold'em. Before the flop, players decide which card to discard, keeping two cards for the rest of the game."
                 }  else if index == 2 || index == 5 {
-                    boomPotMessage = "In Double Board Texas Hold'em, Each player starts with a hand of two cards,, and players need to choose one card to show face up before the flop."
-                } else if index == 3 || index == 6{
-                    boomPotMessage = "Each player starts with five cards, and each street is one round of a Boom Pot. To proceed to the next round, a player must pay 5 chips and discard one card until the river, then the remaining players continue with a standard game of Texas Hold'em."
+                    boomPotMessage = "In Double Board Texas Hold'em, Each player starts with a hand of two cards, and players need to choose one card to show face up before the flop."
+                } else if index == 3 || index == 6 {
+                    boomPotMessage = "Each player starts with five cards, to proceed to the next steet, a player must pay 5(PF)/10(F)/20(T) chips and discard one card until the river,  then the remaining players can bet on river."
+                } else if index == 7 {
+                    boomPotMessage = "In Double Board Texas Hold'em, Each player starts with a hand of two cards, and players need to choose one card and pass to the left side player before the flop."
+                } else if index == 8 {
+                    boomPotMessage = "In Double Board Texas Hold'em, Each player starts with a hand of two cards, and players need to choose one card and pass to the right side player before the flop."
+                } else if index == 9 {
+                    boomPotMessage = "In Double Board Texas Hold'em, players are initially dealt two cards, and unlike the usual 5 common cards on the board, there will be 6 this time."
                 } else {
                     boomPotMessage = "Must be a bug"
                 }
