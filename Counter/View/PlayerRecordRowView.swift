@@ -9,9 +9,10 @@ import SwiftUI
 
 struct PlayerRecordRowView: View {
     var currentPlayer: PlayerRecord
+    var rank: Int
     var body: some View {
         HStack (alignment: .center) {
-            Text("\(currentPlayer.name)")
+            Text("\(getRank(index: rank) currentPlayer.name)")
                 .frame(width: 85, alignment: .center)
             Text("\(currentPlayer.totalGameWinned + currentPlayer.totalGameLost)")
                 .frame(width: 45, alignment: .center)
@@ -31,8 +32,20 @@ struct PlayerRecordRowView: View {
         }
         return String(format: "$%.2f",profit)
     }
+    func getRank(index: Int) -> String {
+        switch index {
+        case 0:
+            return "🏅"
+        case 1:
+            return "🥈"
+        case 2:
+            return "🥉"
+        default:
+            return "\(index)"
+        }
+    }
 }
 
 #Preview {
-    PlayerRecordRowView(currentPlayer: PlayerRecord(name: "Foo"))
+    PlayerRecordRowView(currentPlayer: PlayerRecord(name: "Foo"), rank: 1)
 }

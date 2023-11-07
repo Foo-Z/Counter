@@ -35,11 +35,13 @@ struct PlayerRecordView: View {
                             .frame(width: 85, alignment: .center)
                         Text(" ")
                     }
-                    ForEach(playerRecords) { playerRecord in
-                        NavigationLink(destination: PlayerHistoricalResultView(playerName: playerRecord.name, resultNames: Array(playerRecord.gamePlayed).sorted(by: >))) {
-                            PlayerRecordRowView(currentPlayer: playerRecord)
+                    ForEach(Array(playerRecords), id: \.name) { playerRecord in
+                        if let index = Array(playerRecords).firstIndex(of: playerRecord) {
+                            NavigationLink(destination: PlayerHistoricalResultView(playerName: playerRecord.name, resultNames: Array(playerRecord.gamePlayed).sorted(by: >))) {
+                                PlayerRecordRowView(currentPlayer: playerRecord, rank: index)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
-                        .buttonStyle(PlainButtonStyle())
                     }
                     .onDelete(perform: { indexSet in
                         for index in indexSet {
