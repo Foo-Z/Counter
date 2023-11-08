@@ -444,12 +444,12 @@ extension HistoricalResult {
         ]),
         HistoricalResult(sessionName: "2023/11/03 19:00 0.5/0.5 MAX10", playerResults: [
             Result.Player(name: "Weiran", buyinDollarAmount: 50.00, profitDollarAmount: 111.00),
-            Result.Player(name: "Mika", buyinDollarAmount: 50.00, profitDollarAmount: 67.5.00),
+            Result.Player(name: "Mika", buyinDollarAmount: 50.00, profitDollarAmount: 67.00),
             Result.Player(name: "Rick", buyinDollarAmount: 50.00, profitDollarAmount: 46.00),
             Result.Player(name: "超伦", buyinDollarAmount: 50.00, profitDollarAmount: 20.00),
             Result.Player(name: "叮叮", buyinDollarAmount: 50.00, profitDollarAmount: -5.00),
             Result.Player(name: "Feiou", buyinDollarAmount: 50.00, profitDollarAmount: -10.00),
-            Result.Player(name: "王皓", buyinDollarAmount: 50.00, profitDollarAmount: -21.5.00),
+            Result.Player(name: "王皓", buyinDollarAmount: 50.00, profitDollarAmount: -21.00),
             Result.Player(name: "少桐", buyinDollarAmount: 50.00, profitDollarAmount: -38.00),
             Result.Player(name: "Wenna", buyinDollarAmount: 50.00, profitDollarAmount: -50.00),
             Result.Player(name: "Lw", buyinDollarAmount: 50.00, profitDollarAmount: -120.00)

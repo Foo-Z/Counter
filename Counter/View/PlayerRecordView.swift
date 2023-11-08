@@ -21,19 +21,21 @@ struct PlayerRecordView: View {
                     .padding(10)
                 List {
                     HStack(alignment: .center) {
-                        Text("Name")
-                            .frame(width: 70, alignment: .center)
-                        Text("Game")
-                            .frame(width: 45, alignment: .center)
-                        Text("Win")
-                            .frame(width: 30, alignment: .center)
-                        Text("Lose")
+                        Text("Rank")
                             .frame(width: 40, alignment: .center)
-                        Text("CL")
+                        Text("Name")
+                            .frame(width: 65, alignment: .center)
+                        Text("Game")
+                            .frame(width: 40, alignment: .center)
+                        Text("Win")
+                            .frame(width: 25, alignment: .center)
+                        Text("Lose")
                             .frame(width: 30, alignment: .center)
+                        Text("CL")
+                            .frame(width: 25, alignment: .center)
                         Text("Profit")
-                            .frame(width: 85, alignment: .center)
-                        Text(" ")
+                            .frame(width: 80, alignment: .center)
+                       // Text(" ")
                     }
                     ForEach(Array(playerRecords), id: \.name) { playerRecord in
                         if let index = Array(playerRecords).firstIndex(of: playerRecord) {
@@ -60,6 +62,7 @@ struct PlayerRecordView: View {
                         )
                     }
                 }
+                .font(.system(size: 13))
             }
         }
     }

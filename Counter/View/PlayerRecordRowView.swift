@@ -12,18 +12,22 @@ struct PlayerRecordRowView: View {
     var rank: Int
     var body: some View {
         HStack (alignment: .center) {
-            Text("\(getRank(index: rank) currentPlayer.name)")
-                .frame(width: 85, alignment: .center)
-            Text("\(currentPlayer.totalGameWinned + currentPlayer.totalGameLost)")
-                .frame(width: 45, alignment: .center)
-            Text("\(currentPlayer.totalGameWinned)")
-                .frame(width: 30, alignment: .center)
-            Text("\(currentPlayer.totalGameLost)")
+            Spacer()
+            Spacer()
+            Text("\(getRank(index: rank))")
                 .frame(width: 40, alignment: .center)
-            Text("\(currentPlayer.chipLeaderCount)")
+            Text("\(currentPlayer.name)")
+                .frame(width: 65, alignment: .center)
+            Text("\(currentPlayer.totalGameWinned + currentPlayer.totalGameLost)")
+                .frame(width: 40, alignment: .center)
+            Text("\(currentPlayer.totalGameWinned)")
+                .frame(width: 25, alignment: .center)
+            Text("\(currentPlayer.totalGameLost)")
                 .frame(width: 30, alignment: .center)
+            Text("\(currentPlayer.chipLeaderCount)")
+                .frame(width: 25, alignment: .center)
             Text(getProfit(profit: currentPlayer.totalProfit))
-                .frame(width: 90, alignment: .center)
+                .frame(width: 80, alignment: .center)
         }
     }
     func getProfit(profit: Float) ->String {
@@ -41,7 +45,7 @@ struct PlayerRecordRowView: View {
         case 2:
             return "🥉"
         default:
-            return "\(index)"
+            return "\(index + 1)"
         }
     }
 }

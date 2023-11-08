@@ -32,6 +32,7 @@ struct HistoricalResultView: View {
                         }
                     })
                 }
+                .font(.system(size: 15))
             }
             HStack {
                 Button(action: {
