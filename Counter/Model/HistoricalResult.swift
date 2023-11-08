@@ -465,7 +465,7 @@ extension HistoricalResult {
             Result.Player(name: "阵雨", buyinDollarAmount: 50.00, profitDollarAmount: -28.00),
             Result.Player(name: "Rick", buyinDollarAmount: 50.00, profitDollarAmount: -250.00)
         ]),
-        HistoricalResult(sessionName: "2023/11/06 19:00 0.5/0.5 MAX", playerResults: [
+        HistoricalResult(sessionName: "2023/11/06 19:00 0.5/0.5 MAX8", playerResults: [
             Result.Player(name: "Colin", buyinDollarAmount: 50.00, profitDollarAmount: 144.00),
             Result.Player(name: "Lei", buyinDollarAmount: 50.00, profitDollarAmount: 140.00),
             Result.Player(name: "Yunong", buyinDollarAmount: 50.00, profitDollarAmount: 18.00),
@@ -474,6 +474,17 @@ extension HistoricalResult {
             Result.Player(name: "Herry", buyinDollarAmount: 50.00, profitDollarAmount: -50.00),
             Result.Player(name: "Hanna", buyinDollarAmount: 50.00, profitDollarAmount: -60.00),
             Result.Player(name: "浩文", buyinDollarAmount: 50.00, profitDollarAmount: -200.00)
+        ]),
+        HistoricalResult(sessionName: "2023/11/06 19:00 0.5/0.5 MAX9", playerResults: [
+            Result.Player(name: "超伦", buyinDollarAmount: 50.00, profitDollarAmount: 148.00),
+            Result.Player(name: "L", buyinDollarAmount: 50.00, profitDollarAmount: 145.00),
+            Result.Player(name: "Lw", buyinDollarAmount: 50.00, profitDollarAmount: 90.00),
+            Result.Player(name: "Lei", buyinDollarAmount: 50.00, profitDollarAmount: 58.00),
+            Result.Player(name: "Amanda", buyinDollarAmount: 50.00, profitDollarAmount: -9.00),
+            Result.Player(name: "Rick", buyinDollarAmount: 50.00, profitDollarAmount: -35.00),
+            Result.Player(name: "恰空", buyinDollarAmount: 50.00, profitDollarAmount: -43.00),
+            Result.Player(name: "Mika", buyinDollarAmount: 50.00, profitDollarAmount: -110.00),
+            Result.Player(name: "Feiou", buyinDollarAmount: 50.00, profitDollarAmount: -244.00)
         ])
     ]
 }
