@@ -13,9 +13,9 @@ struct AddHistoricalResultView: View {
     @Query() private var results: [Result]
     @State private var sessionDate: String = "2023/01/01 19:00"
     @State private var defaultGameLevel: String = "0.5/0.5"
-    @State var showingSelector: Bool =  false
+    @State var showingSelector: Bool = false
     @State private var selectedPlayers: Set<String> = []
-    @State private var playerProfits: [Float] = Array(repeating: 0, count: 12)
+    @State private var playerProfits: [Float] = Array(repeating: 0, count: 50)
     @Environment(\.dismiss) private var dismiss
     @Query private var playerRecords: [PlayerRecord]
     

@@ -23,6 +23,7 @@ struct PlayerHistoricalResultView: View {
                         }
                     }
                 }
+                .font(.system(size: 15))
             }
         }
     }
