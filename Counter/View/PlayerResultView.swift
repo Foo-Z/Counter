@@ -19,7 +19,7 @@ struct PlayerResultView: View {
             Text("\(currentPlayer.name) \(getResult())")
                 .frame(width: 165, alignment: .leading)
             Spacer()
-            Text(addFish())
+            Text(addClow())
                 .font(.system(size:20))
             Spacer()
             Text("(\(String(format: "$%.2f", Float(currentPlayer.buyinDollarAmount))) BuyIn)").font(.system(size: 13))
@@ -34,6 +34,9 @@ struct PlayerResultView: View {
     
     func addFish() -> String {
         return currentPlayer.profitDollarAmount < 0 ? "🐟" : ""
+    }
+    func addClow() -> String {
+        return currentPlayer.profitDollarAmount < 0 ? "🤡" : ""
     }
 }
 
