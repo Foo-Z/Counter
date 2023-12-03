@@ -19,7 +19,7 @@ struct PlayerResultView: View {
             Text("\(currentPlayer.name) \(getResult())")
                 .frame(width: 165, alignment: .leading)
             Spacer()
-            Text(addClow())
+            Text(addFish())
                 .font(.system(size:20))
             Spacer()
             Text("(\(String(format: "$%.2f", Float(currentPlayer.buyinDollarAmount))) BuyIn)").font(.system(size: 13))

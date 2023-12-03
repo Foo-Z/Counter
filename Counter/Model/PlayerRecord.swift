@@ -40,7 +40,7 @@ extension PlayerRecord {
         PlayerRecord(name: "王皓"),
         PlayerRecord(name: "超伦"),
         PlayerRecord(name: "叮叮"),
-        PlayerRecord(name: "Herry"),
+        PlayerRecord(name: "Henry"),
         PlayerRecord(name: "Weiran"),
         PlayerRecord(name: "Mika"),
         PlayerRecord(name: "少桐"),

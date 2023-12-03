@@ -17,6 +17,7 @@ struct ResultView: View {
     //        _wins = Query(filter: #Predicate({ $0.profit >= 0 }))
     //    }
     var resultId: String
+//    var sessionDuration: String = "4 hours and 30 minutes"
     @Environment(\.modelContext) private var context
     @Query() private var results: [Result]
     var body: some View {
@@ -24,6 +25,7 @@ struct ResultView: View {
             VStack {
                 Text(getResult().name).font(.title3)
                 Text("Chip leader is: \(getChipLeader())").font(.title2)
+                Text("Session played: \(getResult().sessionDuration)")
             }
             FireworksView()
         }.frame(height: 85)

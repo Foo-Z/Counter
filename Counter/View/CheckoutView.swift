@@ -74,6 +74,7 @@ struct CheckoutView: View {
         let chipLeader = result.wins.first?.name ?? "Feiou"
         let chipLeaderRecord = try! playerRecords.filter(#Predicate { $0.name == chipLeader }).last ?? PlayerRecord(name: chipLeader)
         chipLeaderRecord.chipLeaderCount += 1
+        result.sessionDuration = getDuration()
         context.insert(result)
     }
     
@@ -98,6 +99,17 @@ struct CheckoutView: View {
     
     func getSessionDate() -> Date {
         settings.first?.sessionDate ?? Date.now
+    }
+    
+    func getDuration() -> String {
+        let end = Date.now
+        let start = getSessionDate()
+        
+        let timeInterval = end.timeIntervalSince(start)
+        // Convert the time interval to hours and minutes
+        let hours = Int(timeInterval / 3600)
+        let minutes = Int((timeInterval.truncatingRemainder(dividingBy: 3600)) / 60)
+        return "\(hours) hours and \(minutes) minutes"
     }
     
     func getChipValue() -> Float {

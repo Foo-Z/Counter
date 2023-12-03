@@ -18,6 +18,7 @@ class Result {
     }
     
     @Attribute(.unique) var name: String
+    var sessionDuration: String
     var wins: [Result.Player]
     var loses: [Result.Player]
     
@@ -27,10 +28,12 @@ class Result {
         name = dateFormatter.string(from: Date.now)
         wins = []
         loses = []
+        sessionDuration = "4 hours and 30 minutes"
     }
     init(name: String) {
         self.name = name
         wins = []
         loses = []
+        sessionDuration = "4 hours and 30 minutes"
     }
 }
