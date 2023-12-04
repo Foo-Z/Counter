@@ -538,7 +538,7 @@ extension HistoricalResult {
             Result.Player(name: "浩文", buyinDollarAmount: 50.00, profitDollarAmount: 171.50),
             Result.Player(name: "Henry", buyinDollarAmount: 50.00, profitDollarAmount: 9.00),
             Result.Player(name: "叮叮", buyinDollarAmount: 50.00, profitDollarAmount: -99.50),
-            Result.Player(name: "Haana", buyinDollarAmount: 50.00, profitDollarAmount: -130.00),
+            Result.Player(name: "Hanna", buyinDollarAmount: 50.00, profitDollarAmount: -130.00),
             Result.Player(name: "Feiou", buyinDollarAmount: 50.00, profitDollarAmount: -144.00)
         ]),
         HistoricalResult(sessionName: "2023/11/16 19:00 0.5/0.5 MAX6", playerResults: [
