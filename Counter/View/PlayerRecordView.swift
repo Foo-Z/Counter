@@ -22,21 +22,25 @@ struct PlayerRecordView: View {
                 List {
                     HStack(alignment: .center) {
                         Text("Rank")
-                            .frame(width: 40, alignment: .center)
+                            .frame(width: 25, alignment: .center)
                         Text("Name")
-                            .frame(width: 65, alignment: .center)
+                            .frame(width: 35, alignment: .center)
                         Text("Game")
-                            .frame(width: 40, alignment: .center)
+                            .frame(width: 28, alignment: .center)
                         Text("Win")
-                            .frame(width: 25, alignment: .center)
+                            .frame(width: 20, alignment: .center)
                         Text("Lose")
-                            .frame(width: 30, alignment: .center)
+                            .frame(width: 28, alignment: .center)
+                        Text("Win %")
+                            .frame(width: 28, alignment: .center)
                         Text("CL")
-                            .frame(width: 25, alignment: .center)
-                        Text("Profit")
-                            .frame(width: 80, alignment: .center)
+                            .frame(width: 23, alignment: .center)
+                        Text("$ Game")
+                            .frame(width: 40, alignment: .center)
+                        Text("  Total $")
+                            .frame(width: 40, alignment: .center)
                        // Text(" ")
-                    }
+                    }.font(.system(size: 8))
                     ForEach(Array(playerRecords), id: \.name) { playerRecord in
                         if let index = Array(playerRecords).firstIndex(of: playerRecord) {
                             NavigationLink(destination: PlayerHistoricalResultView(playerName: playerRecord.name, resultNames: Array(playerRecord.gamePlayed).sorted(by: >))) {

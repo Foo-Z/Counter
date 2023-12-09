@@ -14,28 +14,62 @@ struct PlayerRecordRowView: View {
         HStack (alignment: .center) {
             Spacer()
             Spacer()
+            Spacer()
             Text("\(getRank(index: rank))")
-                .frame(width: 40, alignment: .center)
+                .frame(width: 23, alignment: .center)
             Text("\(currentPlayer.name)")
-                .frame(width: 65, alignment: .center)
+                .frame(width: 43, alignment: .center)
             Text("\(currentPlayer.totalGameWinned + currentPlayer.totalGameLost)")
-                .frame(width: 40, alignment: .center)
+                .frame(width: 23, alignment: .center)
             Text("\(currentPlayer.totalGameWinned)")
-                .frame(width: 25, alignment: .center)
+                .frame(width: 23, alignment: .center)
             Text("\(currentPlayer.totalGameLost)")
-                .frame(width: 30, alignment: .center)
+                .frame(width: 23, alignment: .center)
+            Text(getWinRate(win: currentPlayer.totalGameWinned, loss: currentPlayer.totalGameLost))
+                .frame(width: 33, alignment: .center)
             Text("\(currentPlayer.chipLeaderCount)")
-                .frame(width: 25, alignment: .center)
+                .frame(width: 23, alignment: .center)
+            Text(getProfitPerGame(profit: currentPlayer.totalProfit, totalGame: currentPlayer.totalGameLost + currentPlayer.totalGameWinned))
+                .frame(width: 43, alignment: .center)
             Text(getProfit(profit: currentPlayer.totalProfit))
-                .frame(width: 80, alignment: .center)
-        }
+                .frame(width: 43, alignment: .center)
+        }.font(.system(size: 9))
     }
+    
+    func getWinRate(win: Int, loss: Int) -> String {
+        let rate = win * 100 / (win + loss);
+        return "\(rate)%";
+    }
+    
     func getProfit(profit: Float) ->String {
         if profit < 0 {
             return "-\(String(format: "$%.2f", abs(profit)))"
         }
         return String(format: "$%.2f",profit)
     }
+    
+    func getProfitInt(profit: Float) -> String {
+        if profit < 0 {
+            return "-\(Int(abs(profit)))"
+        }
+        return "\(Int(profit))"
+    }
+    
+    func getProfitPerGameInt(profit: Float, totalGame: Int) -> String {
+        if profit < 0 {
+            return "-\(Int(abs(profit)) / totalGame)"
+        }
+        return "\(Int(profit) / totalGame)"
+    }
+    
+    func getProfitPerGame(profit: Float, totalGame: Int) -> String {
+        
+        if profit < 0 {
+            return "-\(String(format: "$%.2f", (abs(profit) / Float(totalGame))))"
+        }
+        return String(format: "$%.2f", profit / Float(totalGame))
+    }
+    
     func getRank(index: Int) -> String {
         switch index {
         case 0:

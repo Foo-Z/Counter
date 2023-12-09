@@ -11,7 +11,7 @@ import SwiftData
 struct SelectPlayerView: View {
     @Environment(\.modelContext) private var context
     @Binding var selectedPlayers: Set<String>
-    @Query private var playerRecords: [PlayerRecord]
+    @Query(sort: \PlayerRecord.totalGameWinned, order: .reverse) private var playerRecords: [PlayerRecord]
 
     var body: some View {
         Text("Tap to select players")
