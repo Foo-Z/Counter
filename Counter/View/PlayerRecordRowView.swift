@@ -32,11 +32,14 @@ struct PlayerRecordRowView: View {
             Text(getProfitPerGame(profit: currentPlayer.totalProfit, totalGame: currentPlayer.totalGameLost + currentPlayer.totalGameWinned))
                 .frame(width: 43, alignment: .center)
             Text(getProfit(profit: currentPlayer.totalProfit))
-                .frame(width: 43, alignment: .center)
+                .frame(width: 48, alignment: .center)
         }.font(.system(size: 9))
     }
     
     func getWinRate(win: Int, loss: Int) -> String {
+        if win + loss == 0 {
+            return "0 %"
+        }
         let rate = win * 100 / (win + loss);
         return "\(rate)%";
     }

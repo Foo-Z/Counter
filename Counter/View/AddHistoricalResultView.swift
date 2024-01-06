@@ -11,7 +11,7 @@ import SwiftData
 struct AddHistoricalResultView: View {
     @Environment(\.modelContext) private var context
     @Query() private var results: [Result]
-    @State private var sessionDate: String = "2023/01/01 19:00"
+    @State private var sessionDate: String = "2024/01/01 19:00"
     @State private var defaultGameLevel: String = "0.5/0.5"
     @State var showingSelector: Bool = false
     @State private var selectedPlayers: Set<String> = []
