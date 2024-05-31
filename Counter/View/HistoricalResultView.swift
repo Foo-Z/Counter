@@ -13,6 +13,7 @@ struct HistoricalResultView: View {
     @Query(sort: \Result.name, order: .reverse) private var results: [Result]
     @Query private var playerRecords: [PlayerRecord]
     @State var showingAddRecord: Bool = false
+    //@FirestoreQuery(collectionPath: "Result") private var results:[Result]
     
     var body: some View {
         NavigationStack {
@@ -55,10 +56,23 @@ struct HistoricalResultView: View {
                 .sheet(isPresented: $showingAddRecord, content: {
                     AddHistoricalResultView()
                 })
+                
+                Button(action: {
+                    removeAllRecord()
+                }) {
+                    Image(systemName: "clear")
+                }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .font(.title3)
+                .padding(30)
             }
         }
     }
-    
+    func removeAllRecord() {
+        for result in results {
+            removeRecord(result)
+        }
+    }
     func removeRecord(_ result: Result) {
         let wins = result.wins
         let loses = result.loses

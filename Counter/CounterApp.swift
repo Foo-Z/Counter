@@ -7,10 +7,21 @@
 
 import SwiftUI
 import SwiftData
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+
+    return true
+  }
+}
 
 @main
 struct CounterApp: App {
     let modelContainer: ModelContainer
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     init() {
         do {
