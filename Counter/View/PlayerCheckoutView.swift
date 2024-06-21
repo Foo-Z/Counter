@@ -16,12 +16,23 @@ struct PlayerCheckoutView: View {
     
     var body: some View {
         HStack {
-            Text("\(currentPlayer.name) bought: \(currentPlayer.buyIn)")
+            VStack {
+                Text("\(currentPlayer.name) bought: \(currentPlayer.buyIn)")
+                    .font(.system(size: 15))
+                Text(" ")
+                    .font(.system(size: 11))
+            }
             Spacer()
+            VStack {
+                Text(" ")
+                Text("stack: \(currentPlayer.cashOut)")
+                    .font(.system(size: 11))
+                    .frame(alignment: .bottom)
+            }
             TextField("cashout", value: $cashout, format: .number)
                 .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)
-                .frame(width: 100)
+                .frame(width: 80)
                 .focused($isOnFocused)
                 .onChange(of: !isOnFocused, updateCheckout)
         }
@@ -29,7 +40,9 @@ struct PlayerCheckoutView: View {
             self.hideKeyboard()
         }
     }
-    
+    func getCheckoutChips() -> Int {
+        return currentPlayer.cashOut;
+    }
     func updateCheckout() {
         currentPlayer.cashOut = cashout ?? 0
         try? context.save()

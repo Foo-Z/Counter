@@ -163,7 +163,9 @@ struct CounterView: View {
         for index in 0..<count {
             seat.append(index + 1)
         }
-        seat.shuffle()
+        for _ in 0...5 {
+            seat.shuffle()
+        }
         for player in players {
             if let index = Array(players).firstIndex(of: player) {
                 player.seatNumber = seat[index]

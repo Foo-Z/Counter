@@ -16,19 +16,19 @@ struct PlayerResultView: View {
     
     var body: some View {
         HStack {
-            Text("\(currentPlayer.name) \(getResult())")
-                .frame(width: 165, alignment: .leading)
+            Text("\(currentPlayer.name) \(getResult())").font(.system(size: 16))
+                .frame(width: 170, alignment: .leading)
             Spacer()
             Text(addFish())
                 .font(.system(size:20))
             Spacer()
-            Text("(\(String(format: "$%.2f", Float(currentPlayer.buyinDollarAmount))) BuyIn)").font(.system(size: 13))
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+            Text("(\(String(format: "$%.2f", Float(currentPlayer.buyinDollarAmount))) BuyIn)").font(.system(size: 12.5))
+                .frame(width: 105)
         }
     }
     
     func getResult() -> String {
-        let r = currentPlayer.profitDollarAmount < 0 ? "lose" : "win"
+        let r = currentPlayer.profitDollarAmount < 0 ? "lost" : "won"
         return "\(r) \(String(format: "$%.2f", Float(abs(currentPlayer.profitDollarAmount))))"
     }
     

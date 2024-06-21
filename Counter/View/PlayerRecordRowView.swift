@@ -18,7 +18,7 @@ struct PlayerRecordRowView: View {
             Text("\(getRank(index: rank))")
                 .frame(width: 23, alignment: .center)
             Text("\(currentPlayer.name)")
-                .frame(width: 43, alignment: .center)
+                .frame(width: 45, alignment: .center)
             Text("\(currentPlayer.totalGameWinned + currentPlayer.totalGameLost)")
                 .frame(width: 23, alignment: .center)
             Text("\(currentPlayer.totalGameWinned)")
